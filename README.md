@@ -2,23 +2,7 @@
 
 An interactive graph visualisation of AI/ML research trends derived from arXiv paper statistics. Topics are grouped into categories, connected by co-occurrence edges, and colour-coded by trend direction (heating up / cooling off / stable).
 
----
-
-## Project Structure
-
-```
-/
-├── index.html              # Shell — markup only, no inline handlers
-├── style.css               # All styles
-└── scripts/
-    ├── main.js             # Entry point — boot + event listeners
-    ├── state.js            # Single shared state object + constants
-    ├── data.js             # Fetch, normalisation, derived lookup tables
-    ├── chart.js            # ECharts instance, render, hover, fit, font
-    ├── views.js            # View transitions + breadcrumb navigation
-    ├── panel.js            # Right-panel renderers + sort controls
-    └── controls.js         # Sidebar UI (date range, toggle, subheading)
-```
+**ATTENTION**: The [live demo](https://manhowong.github.io/ai-ml-trend-explorer/) uses mock data.
 
 ---
 
@@ -75,8 +59,6 @@ flowchart TD
 | `panel.js` | Renders the right-panel info boxes and sort dropdowns for each view; exposes `setSortMode` which is called from inline `onchange` handlers in generated HTML |
 | `controls.js` | Manages the date-range `<select>` elements and triggers a full data re-derive + re-render on change; handles sidebar collapse and the subheading text |
 
----
-
 ## Data Flow
 
 ```mermaid
@@ -111,8 +93,6 @@ sequenceDiagram
     panel.js->>panel.js: updateRightPanel()
 ```
 
----
-
 ## Getting Started
 
 The app fetches JSON at runtime so it must be served over HTTP — opening `index.html` directly as a `file://` URL will not work.
@@ -132,16 +112,7 @@ npx serve .
 
 Then open `http://localhost:8080` in your browser.
 
----
-
 ## Adding Data
 
 - **`data/metadata.json`** — defines the node taxonomy. Each node needs `L` (level: 1 or 2), `N` (name), and for L2 nodes `P` (parent category id).
 - **`data/timeseries.json`** — keyed by month string (`"YYYY-MM"`). Each month contains `nodes_L1`, `nodes_L2` (with `V` monthly volume and `VC` cumulative volume), `links` (with `S`, `T`, `J` Jaccard similarity), and per-node `K` keyword arrays.
-
----
-
-## Notes
-
-- Five functions (`applyHover`, `clearHover`, `focusCategory`, `focusChildNode`, `setSortMode`) are attached to `window` in `main.js` because `panel.js` generates HTML strings with inline `onclick`/`onchange` attributes. To remove these globals, replace them with event delegation on the panel container elements.
-- All modules use ES module `import`/`export` — no bundler required.
