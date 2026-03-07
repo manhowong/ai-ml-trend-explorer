@@ -483,7 +483,7 @@ label:has(#toggleIntraEdges:disabled) {
 /* #right-panel.collapsed { min-height:auto } */
 #right-panel.collapsed {
   min-height: 0px;
-  /* Animation for panel collapse */
+  /* Animation for panel collapse */ 
   transition: min-height 0.4s ease;
 }
 #right-panel.collapsed .info-box { display: none; }
