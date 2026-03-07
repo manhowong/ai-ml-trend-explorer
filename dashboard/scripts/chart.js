@@ -101,6 +101,20 @@ export function initializeRichStyles() {
 }
 
 
+// ── Chart centre ─────────────────────────────────────────────
+
+/**
+ * The right panel overlays the right ~33% of the canvas.
+ * Visual centre of the free area = ~33% from the left.
+ * When collapsed the true canvas centre (50%) is used.
+ */
+export function getChartCenter() {
+  const panel = document.getElementById('right-panel');
+  if (panel && panel.classList.contains('collapsed')) return ['50%', '50%'];
+  return ['59%', '50%'];
+}
+
+
 // ── Core render function ─────────────────────────────────────
 
 export function renderChart(nodes, links) {
@@ -113,7 +127,7 @@ export function renderChart(nodes, links) {
       layout:    'circular',
       roam:      true,
       zoom:      0.85,
-      center:    ['40%', '50%'],
+      center:    getChartCenter(),
       draggable: false,
       data:      nodes,
       links,
@@ -230,7 +244,7 @@ export function clearHover() {
 
 export function fitScreen() {
   echart.resize();
-  echart.setOption({ series: [{ zoom: 0.85, center: ['40%', '50%'] }] });
+  echart.setOption({ series: [{ zoom: 0.85, center: getChartCenter() }] });
 }
 
 // ── Font-size control ────────────────────────────────────────

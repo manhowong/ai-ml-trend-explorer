@@ -6,7 +6,8 @@ import { state }                                       from './state.js';
 import { loadData, applyNormalizedData, initializeDerivedData } from './data.js';
 import { echart, initializeRichStyles,
          applyHover, clearHover,
-         fitScreen, updateFontSize, resetFontSize }    from './chart.js';
+         fitScreen, updateFontSize, resetFontSize,
+         getChartCenter }                              from './chart.js';
 import { goOverview, focusCategory, focusChildNode }   from './views.js';
 import { setSortMode }                                 from './panel.js';
 import { buildDateRangeControls, updateSubheading,
@@ -29,6 +30,12 @@ window.setSortMode    = setSortMode;
 
 document.getElementById('sidebarToggle')
   .addEventListener('click', toggleSidebar);
+
+document.getElementById('panelToggle')
+  .addEventListener('click', () => {
+    document.getElementById('right-panel').classList.toggle('collapsed');
+    echart.setOption({ series: [{ center: getChartCenter() }] });
+  });
 
 document.getElementById('fitBtn')
   .addEventListener('click', fitScreen);

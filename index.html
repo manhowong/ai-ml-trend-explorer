@@ -99,37 +99,41 @@
       </aside>
 
       <div id="chart"></div>
-    </div>
 
-    <div id="right-panel">
-      <div id="panel-breadcrumb">
-        <div id="treeItems"></div>
-      </div>
+      <div id="right-panel">
+        <button id="panelToggle" title="Collapse panel"></button>
 
-      <div class="info-box" id="info-top">
-        <div class="info-box-header">
-          <span class="info-box-title" id="info-top-title">Categories</span>
-          <div class="info-sort-controls" id="info-top-sort"></div>
-        </div>
-        <div class="info-box-content" id="info-top-content"></div>
-      </div>
+        <div id="panelContent">
+          <div id="panel-breadcrumb">
+            <div id="treeItems"></div>
+          </div>
 
-      <div class="info-box" id="info-bottom">
-        <div class="info-box-header">
-          <span class="info-box-title" id="info-bottom-title">About</span>
-          <div class="info-sort-controls" id="info-bottom-sort"></div>
-        </div>
-        <div class="info-box-content" id="info-bottom-content"></div>
-      </div>
+          <div class="info-box" id="info-top">
+            <div class="info-box-header">
+              <span class="info-box-title" id="info-top-title">Categories</span>
+              <div class="info-sort-controls" id="info-top-sort"></div>
+            </div>
+            <div class="info-box-content" id="info-top-content"></div>
+          </div>
 
-      <div id="panel-footer">
-        <span class="info-box-title">Created by:</span>
-        <a href="https://www.linkedin.com/in/mh-wong" target="_blank">Man Ho Wong</a> |
-        <a href="https://github.com/manhowong/ai-ml-trend-explorer" target="_blank">data + code</a> |
-        <a href="https://github.com/manhowong/ai-ml-trend-explorer/blob/main/LICENSE" target="_blank">license</a>
-      </div>
-    </div>
-  </div>
+          <div class="info-box" id="info-bottom">
+            <div class="info-box-header">
+              <span class="info-box-title" id="info-bottom-title">About</span>
+              <div class="info-sort-controls" id="info-bottom-sort"></div>
+            </div>
+            <div class="info-box-content" id="info-bottom-content"></div>
+          </div>
+
+          <div id="panel-footer">
+            <span class="info-box-title">Created by:</span>
+            <a href="https://www.linkedin.com/in/mh-wong" target="_blank">Man Ho Wong</a> |
+            <a href="https://github.com/manhowong/ai-ml-trend-explorer" target="_blank">data + code</a> |
+            <a href="https://github.com/manhowong/ai-ml-trend-explorer/blob/main/LICENSE" target="_blank">license</a>
+          </div>
+        </div><!-- /panelContent -->
+      </div><!-- /right-panel -->
+    </div><!-- /chart-wrapper -->
+  </div><!-- /main-container -->
 
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <script type="module" src="./dashboard/scripts/main.js"></script>
