@@ -157,7 +157,7 @@ export function focusCategory(catId) {
       itemStyle:  { ...itemStyle },
       label: {
         show:      true,
-        formatter: makeLabel(child.name, child.papers, cat.name, cat.color, false),
+        formatter: makeLabel(child.name, child.papers, ),
         rich:      state.richStyles,
         position:  'bottom',
         distance:  5,
@@ -214,7 +214,7 @@ export function focusCategory(catId) {
           itemStyle:  { ...itemStyle },
           label: {
             show:      true,
-            formatter: makeLabel(child.name, child.papers, extCat.name, extCat.color, true),
+            formatter: makeLabel(child.name, child.papers),
             rich:      state.richStyles,
             position:  'bottom',
             distance:  5,

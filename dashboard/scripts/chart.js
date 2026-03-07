@@ -213,7 +213,10 @@ export function clearHover() {
       itemStyle:  { ...orig._itemStyle },
       label: {
         show:      true,
-        formatter: makeLabel(orig._name, orig._papers, orig._catName, orig._catColor, orig._dim),
+        formatter: makeLabel(orig._name, orig._papers, 
+                     state.currentView === 'child' ? orig._catName : null, 
+                     state.currentView === 'child' ? orig._catColor : null, 
+                     orig._dim),
         rich:      state.richStyles,
         position:  'bottom',
         distance:  orig._type === 'focus' ? 8 : 5,
