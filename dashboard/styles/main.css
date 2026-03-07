@@ -377,9 +377,9 @@ label:has(#toggleIntraEdges:disabled) {
     right: 12px;
     z-index: 10;
     width: 32%;
-    min-width: min-content;
-    min-height: calc(100% - 24px);
-    max-height: calc(100% - 24px);
+    min-width: min-content; /*Must fit the smallest element inside*/
+    min-height: calc(100% - 24px); /*Content fills the height of screen*/
+    max-height: calc(100% - 24px); /*So content doesn't overflow if it exceed screen height*/
     display: flex;
     flex-direction: column;
     background: #000;
@@ -735,6 +735,7 @@ label:has(#toggleIntraEdges:disabled) {
         bottom: auto;
         left: auto;
         padding: 8px 10px;
+        background: #141a26;
     }
 
     #sidebarToggle::after {
@@ -747,7 +748,9 @@ label:has(#toggleIntraEdges:disabled) {
         right: 0;
         width: 100dvw;
         max-height: 90dvh;
+        min-width: auto; /*Set to min-content for large screen, but auto here*/
         border-radius: 12px 12px 0 0;
+        background: #141a26;
     }
 
     .rank-bar-wrap {
