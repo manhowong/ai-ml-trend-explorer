@@ -20,9 +20,16 @@ body {
     overflow: hidden;
 }
 
+a {
+    text-decoration: none;
+}
+
 btnText {
     display: inline-block;
     padding: 2px 10px;
+    font-family: monospace;
+    font-weight: bold;
+    text-transform: uppercase;
     background: #1e293b;
     color: #b3a369;
     border: 1px solid #334155;
@@ -77,14 +84,9 @@ btnText {
     font-family: "Book Antiqua", Georgia, "Times New Roman", Times, serif;
 }
 
-#site-banner a {
-    color: #b3a369;
-    text-decoration: none;
-}
-
 #site-info {
     color: #94a3b8;
-    padding-top: 16px;
+    padding-top: 10px;
 }
 
 #dateText {
@@ -197,7 +199,11 @@ btnText {
 #fitBtn {
     width: calc(100% - 28px);
     padding: 4px 10px;
-    margin: 8px 14px;
+    margin: 0px 14px;
+    text-align: center;
+    font-family: monospace;
+    font-weight: bold;
+    text-transform: uppercase;
     background: #1e293b;
     color: #b3a369;
     border: 1px solid #334155;
@@ -207,8 +213,37 @@ btnText {
     transition: background 0.15s;
 }
 
-#fitBtn.btn-hover {
+#fitBtn:hover {
     background: #334155;
+}
+
+/* Reset button */
+
+#resetBtn {
+    width: calc(100% - 28px);
+    padding: 4px 10px;
+    margin: 8px 14px;
+    text-align: center;
+    font-family: monospace;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #1e293b;
+    color: #b3a369;
+    border: 1px solid #334155;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+#resetBtn:hover {
+    background: #334155;
+}
+
+#resetBtn a {
+    text-decoration: none;
+    color:#b3a369;
 }
 
 /* Date range */
@@ -233,6 +268,7 @@ btnText {
     width: 84px;
     padding: 2px 6px;
     font-size: 12px;
+    font-family: monospace;
     background: #1e293b;
     color: #b3a369;
     border: 1px solid #334155;
@@ -282,6 +318,7 @@ btnText {
 #fontSizeReset {
     color: #475569;
     font-size: 13px;
+    font-weight: bold;
     cursor: pointer;
     user-select: none;
     transition: color 0.15s;
@@ -798,3 +835,4 @@ label:has(#toggleIntraEdges:disabled) {
     }
 
 }
+

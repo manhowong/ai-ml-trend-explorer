@@ -2,7 +2,7 @@
 
 An interactive graph visualisation of AI/ML research trends derived from arXiv paper statistics. Topics are grouped into categories, connected by co-occurrence edges, and colour-coded by trend direction (heating up / cooling off / stable).
 
-**ATTENTION**: The [live demo](https://manhowong.github.io/ai-ml-trend-explorer/) uses mock data.
+**ATTENTION**: The [live demo](https://manhowong.github.io/ai-trends/) uses mock data.
 
 ---
 
