@@ -73,7 +73,7 @@ btnText {
 #caption h1 {
     font-size: 55px;
     font-weight: 300;
-    font-family: Georgia, "Book Antiqua", "Times New Roman", Times, serif;
+    font-family: "Book Antiqua", Georgia, "Times New Roman", Times, serif;
 }
 
 #subheading {
@@ -102,7 +102,6 @@ btnText {
     bottom: 12px;
     left: 12px;
     z-index: 10;
-    padding: 10px 14px;
     background: rgba(15, 17, 23, 0.9);
     border: 1px solid #222;
     border-radius: 8px;
@@ -110,71 +109,52 @@ btnText {
     font-weight: 350;
 }
 
-.sidebar-divider {
-    border: none;
-    border-top: 1px solid #222;
-    margin: 10px 0;
-}
-
-.sidebar-section-label {
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
 #sidebarToggle {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-bottom: 8px;
     padding: 3px 0;
-    background: transparent;
-    color: #475569;
+    background: #1e293b;
+    color: #b3a369;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px 8px 0 0;
     font-size: 12px;
+    font-family:monospace;
+    font-weight:bold;
     cursor: pointer;
     transition: color 0.15s;
+    flex-shrink: 0;
 }
 
 #sidebarToggle:hover {
-    color: #94a3b8;
+    background: #334155;
 }
 
 #sidebarToggle::after {
     content: "▼ HIDE";
-    font-family:monospace;
-    font-weight:bold;
 }
 
 #sidebar.collapsed #sidebarContent {
     display: none;
+    border-radius: 8px;
 }
 
-#sidebar.collapsed #sidebarToggle {
-    margin-bottom: 0;
+#sidebar.collapsed #sidebarToggle{
+    border-radius: 8px;
 }
 
 #sidebar.collapsed #sidebarToggle::after {
     content: "☰ GRAPH CONTROL";
-    color: #b3a369;
-    font-family:monospace;
-    font-weight:bold;
+    padding: 5px 14px;
 }
-
-#sidebar.collapsed {
-    background: #1e293b;
-}
-
-#sidebar.collapsed:hover {
-    background: #334155;
-}
-
 
 /* Legend =================================================================== */
+
+#legend {
+    padding: 1px 14px 10px 14px;
+    border-top: 1px solid #222;
+}
 
 .legend-item {
     display: flex;
@@ -202,10 +182,9 @@ btnText {
 /* Fit-screen button */
 
 #fitBtn {
-    display: block;
-    width: 100%;
-    margin-bottom: 8px;
-    padding: 5px 10px;
+    width: calc(100% - 28px);
+    padding: 4px 10px;
+    margin: 8px 14px;
     background: #1e293b;
     color: #b3a369;
     border: 1px solid #334155;
@@ -222,7 +201,7 @@ btnText {
 /* Date range */
 
 #dateRangeControl {
-    margin-bottom: 8px;
+    padding: 4px 14px;
 }
 
 .date-range-header {
@@ -261,7 +240,7 @@ btnText {
 /* Font size */
 
 #fontSizeControl {
-    margin-bottom: 8px;
+    padding: 4px 14px;
 }
 
 .font-size-header {
@@ -308,7 +287,7 @@ btnText {
 /* Edge toggle */
 
 #edgeToggleControl {
-    margin-bottom: 8px;
+    padding: 4px 14px;
 }
 
 .edge-toggle-row {
@@ -444,7 +423,7 @@ label:has(#toggleIntraEdges:disabled) {
 }
 
 #right-panel.collapsed #panelToggle::after {
-    content: "▲ NODE INFORMATION";
+    content: "▲ NODE LIST";
     color: #b3a369;
     font-family:monospace;
     font-weight:bold;
@@ -742,14 +721,11 @@ label:has(#toggleIntraEdges:disabled) {
         right: 8px;
         bottom: auto;
         left: auto;
-        padding: 8px 10px;
         background: #141a26;
     }
 
     #sidebarToggle::after {
         content: "▲ HIDE";
-        font-family:monospace;
-        font-weight:bold;
     }
 
     #right-panel {
