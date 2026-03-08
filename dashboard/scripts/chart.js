@@ -119,7 +119,7 @@ export function getChartCenter() {
 
 export function renderChart(nodes, links) {
   echart.setOption({
-    backgroundColor:   '#0f1117',
+    backgroundColor:   'transparent',
     animation:          true,
     animationDuration:  1000,
     series: [{

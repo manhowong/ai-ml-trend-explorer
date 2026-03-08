@@ -59,41 +59,54 @@ btnText {
 }
 
 
-/* Caption (page title) ===================================================== */
+/* site-banner (page title) ===================================================== */
 
-#caption {
+#site-banner {
     position: fixed;
     z-index: 1;
     align-items: center;
     padding: 10px 20px;
-    color: #b3a369;
-    pointer-events: none;
+    pointer-events: none; /*To allow clickable elements underneath it*/
 }
 
-#caption h1 {
+#site-banner h1 {
     font-size: 55px;
-    font-weight: 300;
+    /* font-weight: 300; */
+    color: #b3a369;
+    text-decoration: none;
     font-family: "Book Antiqua", Georgia, "Times New Roman", Times, serif;
 }
 
-#subheading {
-    font-size: 17px;
-    color: #e2e8f0;
-    padding-top: 16px;
-    z-index: 1;
-    pointer-events: none;
-}
-
-#report-link {
-    position: fixed;
-    bottom: 28px;
-    right: 35%;
-    z-index: 1;
-    font-size: 12px;
-    color: #94a3b8;
+#site-banner a {
+    color: #b3a369;
     text-decoration: none;
 }
 
+#site-info {
+    color: #94a3b8;
+    padding-top: 16px;
+}
+
+#dateText {
+    font-size: 18px;
+    color: #e2e8f0;
+    z-index: 1;
+}
+
+#report-link, #report-link a {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: monospace;
+    color: #94a3b8;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 16px;
+    pointer-events: fill; /* Ensure it's clickable even when placed inside anti-click element*/
+}
+
+#report-link a:hover {
+    color: #b3a369;
+}
 
 /* Sidebar ================================================================== */
 
@@ -102,7 +115,7 @@ btnText {
     bottom: 12px;
     left: 12px;
     z-index: 10;
-    background: rgba(15, 17, 23, 0.9);
+    background: #000;
     border: 1px solid #222;
     border-radius: 8px;
     font-size: 13px;
@@ -146,7 +159,7 @@ btnText {
 
 #sidebar.collapsed #sidebarToggle::after {
     content: "☰ GRAPH CONTROL";
-    padding: 5px 14px;
+    padding: 8px 14px;
 }
 
 /* Legend =================================================================== */
@@ -666,6 +679,22 @@ label:has(#toggleIntraEdges:disabled) {
     padding: 4px 0;
 }
 
+.github-icon {
+  width: 12px;
+  height: 12px;
+  display:inline-block;
+  background-color: #94a3b8; /* Initial Icon Color */
+  /* GitHub Icon Mask */
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z'/%3E%3C/svg%3E") no-repeat center;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z'/%3E%3C/svg%3E") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;  
+  transition: background-color 0.3s ease; /* transition for the color change */
+}
+
+.github-icon:hover {
+  background-color: #b3a369;
+}
 
 /* Responsive Breakpoints =================================================== */
 
@@ -673,7 +702,7 @@ label:has(#toggleIntraEdges:disabled) {
 
 @media (max-width: 1024px) {
 
-    #caption h1 {
+    #site-banner h1 {
         font-size: 45px;
     }
 
@@ -695,11 +724,11 @@ label:has(#toggleIntraEdges:disabled) {
         overflow: hidden;
     }
 
-    #caption {
+    #site-banner {
         padding: 10px 14px;
     }
 
-    #caption h1 {
+    #site-banner h1 {
         font-size: 35px;
     }
 
@@ -748,7 +777,7 @@ label:has(#toggleIntraEdges:disabled) {
 
 @media (max-width: 480px) {
 
-    #caption h1 {
+    #site-banner h1 {
         font-size: 30px;
     }
 

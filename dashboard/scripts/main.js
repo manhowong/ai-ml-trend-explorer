@@ -10,7 +10,7 @@ import { echart, initializeRichStyles,
          getChartCenter }                              from './chart.js';
 import { goOverview, focusCategory, focusChildNode }   from './views.js';
 import { setSortMode }                                 from './panel.js';
-import { buildDateRangeControls, updateSubheading,
+import { buildDateRangeControls, updateDateText,
          toggleSidebar, initEdgeToggles } from './controls.js';
 
 
@@ -97,7 +97,7 @@ async function initializeApp() {
   await loadData();
   buildDateRangeControls();
   applyNormalizedData();
-  updateSubheading();
+  updateDateText();
   initializeDerivedData();
   initializeRichStyles();
   goOverview();

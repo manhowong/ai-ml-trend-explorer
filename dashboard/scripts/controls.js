@@ -1,5 +1,5 @@
 /* ============================================================
-   controls.js — Sidebar UI: date-range, subheading, toggle
+   controls.js — Sidebar UI: date-range, dateText, toggle
    ============================================================ */
 
 import { state } from './state.js';
@@ -50,7 +50,7 @@ export function onDateRangeChange() {
     startSelect.value        = state.selectedStartMonth;
   }
 
-  updateSubheading();
+  updateDateText();
   applyNormalizedData();
   initializeDerivedData();
   initializeRichStyles();
@@ -58,10 +58,10 @@ export function onDateRangeChange() {
 }
 
 
-// ── Subheading ───────────────────────────────────────────────
+// ── Date Text ────────────────────────────────────────────────
 
-export function updateSubheading() {
-  const el = document.getElementById('subheading');
+export function updateDateText() {
+  const el = document.getElementById('dateText');
   if (!el || !state.selectedStartMonth || !state.selectedEndMonth) return;
   el.textContent = state.selectedStartMonth === state.selectedEndMonth
     ? state.selectedStartMonth
