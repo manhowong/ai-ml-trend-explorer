@@ -146,6 +146,8 @@ btnText {
 
 #sidebarToggle::after {
     content: "▼ HIDE";
+    font-family:monospace;
+    font-weight:bold;
 }
 
 #sidebar.collapsed #sidebarContent {
@@ -159,6 +161,8 @@ btnText {
 #sidebar.collapsed #sidebarToggle::after {
     content: "☰ GRAPH CONTROL";
     color: #b3a369;
+    font-family:monospace;
+    font-weight:bold;
 }
 
 #sidebar.collapsed {
@@ -189,7 +193,6 @@ btnText {
 }
 
 .legend-note {
-    margin-top: 6px;
     color: #666;
 }
 
@@ -426,7 +429,9 @@ label:has(#toggleIntraEdges:disabled) {
 }
 
 #panelToggle::after {
-    content: "▼ CLOSE";
+    content: "▼ HIDE";
+    font-family:monospace;
+    font-weight:bold;
 }
 
 #right-panel.collapsed #panelToggle {
@@ -439,8 +444,10 @@ label:has(#toggleIntraEdges:disabled) {
 }
 
 #right-panel.collapsed #panelToggle::after {
-    content: "▲ SHOW INFORMATION";
+    content: "▲ NODE INFORMATION";
     color: #b3a369;
+    font-family:monospace;
+    font-weight:bold;
 }
 
 /* Breadcrumb */
@@ -564,9 +571,10 @@ label:has(#toggleIntraEdges:disabled) {
 /* Panel footer */
 
 #panel-footer {
-    display: flex;
+    display:flex;
     justify-content: left;
     align-items: center;
+    min-width:max-content;
     gap: 10px;
     padding: 16px 16px;
     border-top: 1px solid #222;
@@ -602,7 +610,7 @@ label:has(#toggleIntraEdges:disabled) {
     cursor: default;
     border-radius: 4px;
     padding: 2px 4px;
-    transition: background 0.15s;
+    transition: 0.15s;
 }
 
 .ranked-row:hover {
@@ -740,6 +748,8 @@ label:has(#toggleIntraEdges:disabled) {
 
     #sidebarToggle::after {
         content: "▲ HIDE";
+        font-family:monospace;
+        font-weight:bold;
     }
 
     #right-panel {
