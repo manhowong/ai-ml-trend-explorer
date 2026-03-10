@@ -80,6 +80,20 @@ echart.getZr().on('dblclick', e => {
   else if (state.currentView === 'category') goOverview();
 });
 
+// Long-press on empty canvas (mobile) → navigate back up
+let longPressTimer = null;
+
+echart.getZr().on('mousedown', e => {
+  if (e.target) return;
+  longPressTimer = setTimeout(() => {
+    state.hoveredNode = null;
+    if      (state.currentView === 'child')    focusCategory(state.currentCat);
+    else if (state.currentView === 'category') goOverview();
+  }, 500);
+});
+echart.getZr().on('mouseup',   () => clearTimeout(longPressTimer));
+echart.getZr().on('mousemove', () => clearTimeout(longPressTimer));
+
 
 // Responsive resize -----------------------------------------------------------
 

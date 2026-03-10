@@ -84,6 +84,7 @@ export function goOverview() {
       _type:  'parent',
       _orig: {
         _catId: cat.id, _type: 'parent', trend: cat.trend,
+        fixed: false,
         _name: cat.name, _papers: cat.totalpapers,
         _catName: null, _catColor: null, _dim: false,
         _itemStyle: itemStyle,
@@ -168,6 +169,7 @@ export function focusCategory(catId) {
         _catId:     catId,
         _type:      'child',
         trend:      child.trend,
+        fixed:      false,
         _name:      child.name,
         _papers:    child.papers,
         _catName:   cat.name,
@@ -225,6 +227,7 @@ export function focusCategory(catId) {
             _catId:     ecid,
             _type:      'ext',
             trend:      child.trend,
+            fixed:      false,
             _name:      child.name,
             _papers:    child.papers,
             _catName:   extCat.name,

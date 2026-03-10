@@ -87,11 +87,10 @@ export function renderOverviewPanel() {
     <div class="instructions">
       <span>AI/ML topics are grouped by categories.</span>
       <ul class="bullet-list">
-        <li><b>Hover</b> over a node to highlight its direct links.</li>
-        <li><b>Click a node</b> to explore a category or topic.</li>
-        <li><b>Click on empty canvas</b> to navigate back up one level.</li>
-        <li><b>Press</b> <btnText>Fit Screen</btnText> to re-centre the graph at any time.</li>
         <li><b>Select</b> two months or more to see trends.</li>
+        <li><b>Click a node</b> or <b>a row in the list</b> to see more.</li>
+        <li><b>Double-click</b> (or <b>long-press</b> on mobile) on empty canvas to navigate back up.</li>
+        <li><b>Hover</b> over a node (or <b>long-press</b> a node on mobile) to see its links.</li>
       </ul>
     </div>`;
 
@@ -185,7 +184,7 @@ export function renderChildPanel() {
               <span class="rank-num">${i + 1}</span>
               <span class="rank-dot" style="background:${trendColor(connNode.trend)}"></span>
               <span class="rank-name">${connNode.name}</span>
-              <span class="rank-count">${e.w.toFixed(3)}</span>
+              <span class="rank-count">${(e.w * 100).toFixed(1)} %</span>
               <div class="rank-bar-wrap"><div class="rank-bar" style="width:${Math.round(e.w / maxW * 100)}%"></div></div>
             </div>`;
         }).join('')}
@@ -193,7 +192,7 @@ export function renderChildPanel() {
     : '<p class="empty-state">No related topics found.</p>';
 
   setPanelContent('info-top',    'Keywords',       '<span class="rank-bar-title"># papers</span>',      topHTML);
-  setPanelContent('info-bottom', 'Related Topics', '<span class="rank-bar-title">avg jaccard</span>', bottomHTML);
+  setPanelContent('info-bottom', 'Co-mentioned Topics', '<span class="rank-bar-title">Dice-Sørensen</span>', bottomHTML);
 }
 
 

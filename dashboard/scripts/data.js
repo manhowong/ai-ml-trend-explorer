@@ -60,6 +60,27 @@ export function nodeRangeVolume(nodeId, level, startIdx, endIdx) {
   return endVal - prevVal;
 }
 
+/** Return the cumulative co-mentions (CC) for a link at a given month. */
+export function linkCC(monthId, s, t) {
+  const monthLinks = (state.rawTimeseries[monthId] || {}).links || [];
+  const link = monthLinks.find(l =>
+    (l.S === s && l.T === t) || (l.S === t && l.T === s)
+  );
+  return link ? (link.CC || 0) : 0;
+}
+
+/**
+ * Compute CC over a month range for a link pair:
+ *   CC_range = CC[endMonth] − CC[monthBefore startMonth]
+ */
+export function linkRangeCC(s, t, startIdx, endIdx) {
+  const endMonth  = state.dataMonths[endIdx];
+  const prevMonth = startIdx > 0 ? state.dataMonths[startIdx - 1] : null;
+  const endVal    = linkCC(endMonth, s, t);
+  const prevVal   = prevMonth ? linkCC(prevMonth, s, t) : 0;
+  return endVal - prevVal;
+}
+
 export function toTrend(delta) {
   if (delta > 0) return  1;
   if (delta < 0) return -1;
@@ -168,27 +189,32 @@ export function applyNormalizedData() {
     });
   });
 
-  // ── Build child edges: average Jaccard per pair over range ──
-  const edgeAccumulator = {};  // "S|T" sorted → { s, t, jSum, count }
+  // ── Build child edges: Dice coefficient over the selected range ──
+  //   Dice = 2 * CC_range / (VC_A_range + VC_B_range)
+  //   Uses cumulative CC (consistent with how node volumes are computed).
+
+  const linkPairKeys = new Set();
 
   for (let i = startIdx; i <= endIdx; i++) {
     const monthLinks = (timeseries[state.dataMonths[i]] || {}).links || [];
     monthLinks.forEach(link => {
-      const s = link.S, t = link.T, j = link.J || 0;
-      if (!s || !t || j <= 0) return;
+      const s = link.S, t = link.T;
+      if (!s || !t) return;
       if (!visibleTopicIds.has(s) || !visibleTopicIds.has(t)) return;
-      const key = [s, t].sort().join('|');
-      if (!edgeAccumulator[key]) edgeAccumulator[key] = { s, t, jSum: 0, count: 0 };
-      edgeAccumulator[key].jSum  += j;
-      edgeAccumulator[key].count += 1;
+      linkPairKeys.add([s, t].sort().join('|'));
     });
   }
 
-  state.childEdges = Object.values(edgeAccumulator).map(edge => ({
-    s: edge.s,
-    t: edge.t,
-    w: edge.jSum / edge.count,
-  }));
+  state.childEdges = [...linkPairKeys].map(key => {
+    const [s, t] = key.split('|');
+    const cc     = linkRangeCC(s, t, startIdx, endIdx);
+    if (cc <= 0) return null;
+    const vcA  = nodeRangeVolume(s, 2, startIdx, endIdx);
+    const vcB  = nodeRangeVolume(t, 2, startIdx, endIdx);
+    const denom = vcA + vcB;
+    const dice  = denom > 0 ? (2 * cc) / denom : 0;
+    return { s, t, w: dice };
+  }).filter(e => e && e.w > 0);
 }
 
 
