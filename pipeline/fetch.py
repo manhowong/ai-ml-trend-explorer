@@ -4,19 +4,18 @@ pipeline/fetch.py
 Fetch papers from arXiv API.
 """
 
-import calendar
-import logging
 from datetime import date
 from pathlib import Path
 import argparse
 import arxiv
-import pandas as pd
+import polars as pl
 import yaml
 from datetime import date, timedelta
 from tqdm import tqdm
 
 CONFIG_PATH     = "../config/settings.yml"
 CHECKPOINT_DIR  = "../data/checkpoints/fetch"
+ARXIV_DIR  = "../data/arxiv_data"
 
 def load_config() -> dict:
     with open(CONFIG_PATH, "r") as f:
@@ -95,8 +94,8 @@ def fetch_month(year: int, month: int, categories: list):
                 pbar_weeks.write(f"Warning: Failed {cat} for {start_str}: {exc}")
                 continue 
 
-    df = pd.DataFrame(all_rows)
-    df.to_pickle(f'../data/arxiv_data/{date(year, month, 1).strftime("%Y%m")}.pkl')
+    df = pl.DataFrame(all_rows)
+    df.write_parquet(f'{ARXIV_DIR}/{date(year, month, 1).strftime("%Y%m")}.parquet')
     return
 
 if __name__ == "__main__":
