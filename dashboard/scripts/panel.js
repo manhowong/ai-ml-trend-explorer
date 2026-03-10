@@ -192,7 +192,7 @@ export function renderChildPanel() {
     : '<p class="empty-state">No related topics found.</p>';
 
   setPanelContent('info-top',    'Keywords',       '<span class="rank-bar-title"># papers</span>',      topHTML);
-  setPanelContent('info-bottom', 'Co-mentioned Topics', '<span class="rank-bar-title">Dice-Sørensen</span>', bottomHTML);
+  setPanelContent('info-bottom', 'Overlapping Topics', '<span class="rank-bar-title">Overlap score (DSC)</span>', bottomHTML);
 }
 
 
