@@ -33,8 +33,20 @@ document.getElementById('sidebarToggle')
 
 document.getElementById('panelToggle')
   .addEventListener('click', () => {
+    
     document.getElementById('right-panel').classList.toggle('collapsed');
-    echart.setOption({ series: [{ center: getChartCenter() }] });
+    
+    // Shift chart center when the panel is open or closed
+
+    // Check number of nodes in chart. If only 1 node, don't center by chart
+    // (because the node sits at the edge of chart in circular layout)
+    const isSingle = echart.getOption().series[0].data.length === 1;
+    const cx = window.innerWidth / window.innerHeight * 0.2 * 100 ; // calculate horizontal center
+
+    echart.setOption({ series: [{ 
+        center: isSingle?[ `${cx}%`, '50%'] : getChartCenter() 
+      }] 
+    });
   });
 
 document.getElementById('fitBtn')
