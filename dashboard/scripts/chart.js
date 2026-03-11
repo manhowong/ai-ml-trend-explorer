@@ -118,6 +118,10 @@ export function getChartCenter() {
 // ── Core render function ─────────────────────────────────────
 
 export function renderChart(nodes, links) {
+  // Check number of nodes in chart. If only 1 node, don't center at chart
+  // (because the node won't sit at screen center in circular layout)
+  const isSingle = nodes.length === 1;
+
   echart.setOption({
     backgroundColor:   'transparent',
     animation:          true,
@@ -127,7 +131,7 @@ export function renderChart(nodes, links) {
       layout:    'circular',
       roam:      true,
       zoom:      0.85,
-      center:    getChartCenter(),
+      center:    isSingle?['0%', '50%'] : getChartCenter(), // 0%, 50% for 1 node
       draggable: false,
       data:      nodes,
       links,
@@ -246,8 +250,16 @@ export function clearHover() {
 // ── Fit-screen ───────────────────────────────────────────────
 
 export function fitScreen() {
+
+  // Check number of nodes in chart. If only 1 node, don't center at chart
+  // (because the node won't sit at screen center in circular layout)
+  const isSingle = echart.getOption().series[0].data.length === 1; 
   echart.resize();
-  echart.setOption({ series: [{ zoom: 0.85, center: getChartCenter() }] });
+  echart.setOption({ series: [{ 
+      zoom: 0.85, 
+      center: isSingle?['0%', '50%'] : getChartCenter() // 0%, 50% for 1 node
+    }] 
+  });
 }
 
 // ── Font-size control ────────────────────────────────────────

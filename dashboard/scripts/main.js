@@ -67,17 +67,20 @@ echart.on('mouseout', params => {
 
 // Mobile: Long-press instead of hover on node to hightlight it
 let nodeLongPressTimer = null;
-echart.getZr().on('mousedown', e => {
-  if (!e.target) return;  // only for nodes
+let wasLongPress = false;
+
+echart.on('mousedown', params => {
+  if (params.dataType !== 'node') return;
+  wasLongPress = false;
   nodeLongPressTimer = setTimeout(() => {
-    const id = e.target.__hostTarget?.id ?? e.target.id;
-    if (!id) return;
-    state.hoveredNode = id;
-    applyHover(id);
+    wasLongPress = true;
+    state.hoveredNode = params.data.id;
+    applyHover(params.data.id);
   }, 500);
 });
-echart.getZr().on('mouseup', () => clearTimeout(nodeLongPressTimer));
-echart.getZr().on('mousemove', () => clearTimeout(nodeLongPressTimer));
+
+echart.on('mouseup',   () => clearTimeout(nodeLongPressTimer));
+echart.on('mousemove', () => clearTimeout(nodeLongPressTimer));
 
 // Clear hover after long-press by tapping
 echart.getZr().on('click', e => {
@@ -86,9 +89,11 @@ echart.getZr().on('click', e => {
   clearHover();
 });
 
-// Click a node to navigate one level down
+// Click a node to go one level down
 echart.on('click', params => {
   if (params.dataType !== 'node') return;
+  if (wasLongPress) { wasLongPress = false; return; }  // block navigation
+
   const d = params.data;
   state.hoveredNode = null;
   if (state.currentView === 'overview' && d._type === 'parent') focusCategory(d._catId || d.id);
@@ -118,7 +123,7 @@ echart.getZr().on('mousedown', e => {
 echart.getZr().on('mouseup',   () => clearTimeout(longPressTimer));
 echart.getZr().on('mousemove', () => clearTimeout(longPressTimer));
 
-// Responsive resize -----------------------------------------------------------
+// Responsive ------------------------------------------------------------------
 
 window.addEventListener('resize', () => echart.resize());
 
