@@ -122,12 +122,12 @@ function navigateToNode(id, level) {
 
   // Only hightlight nodes when a level 2 node (topic node) is selected
   if (level === 2) {
-    // Delay node highlight so the chart has rendered first
+    // Delay node highlight so the chart has finished rendering and animation
     requestAnimationFrame(() => {
         setTimeout(() => {
         state.hoveredNode = id;
         applyHover(id);
-        }, 800);
+        }, 500);
     });
   }
 

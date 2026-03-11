@@ -132,12 +132,12 @@ export function renderChart(nodes, links) {
       layout:    'circular',
       roam:      true,
       zoom:      0.85,
-      center:    isSingle?[ `${cx}%`, '50%'] : getChartCenter(), // 40%, 50% for 1 node
+      center:    isSingle?[ `${cx}%`, '50%'] : getChartCenter(),
       draggable: false,
       data:      nodes,
       links,
       emphasis:  { disabled: true },
-      label:     { show: true, color: '#ccc', fontSize: 10 },
+      label:     { show: true, color: '#ccc', fontSize: 10, silent: true}, // silent labels (i.e. no response to click)
       lineStyle: { opacity: 1 },
       symbol:    'circle',
       cursor:    'pointer',
