@@ -77,15 +77,25 @@ const mobileActions = {
   onCanvasLongPress: () => navigateUp()
 };
 
-// Determine the action type
+// Navigation functions
 
-let lastTouchTime = 0;
-let longPressTimer = null;
+function navigateDown(d) {
+  state.hoveredNode = null;
+  if (state.currentView === 'overview' && d._type === 'parent') focusCategory(d._catId || d.id);
+  else if (state.currentView === 'category' && (d._type === 'child' || d._type === 'ext')) focusChildNode(d.id);
+  else if (state.currentView === 'child' && d._type === 'conn') focusChildNode(d.id);
+}
 
+function navigateUp() {
+  state.hoveredNode = null;
+  if (state.currentView === 'child') focusCategory(state.currentCat);
+  else if (state.currentView === 'category') goOverview();
+}
+
+// Determine if the event is touch
 const isTouch = (e) => {
   const sourceEvent = e?.event?.event || e?.event || e;
   const touch = (sourceEvent && sourceEvent.pointerType === 'touch');
-  if (touch) lastTouchTime = Date.now();
   return touch;
 };
 
@@ -99,25 +109,17 @@ echart.on('mouseover', (p) => {
 echart.on('mouseout', (p) => {
   if (p.dataType === 'node' && !isTouch(p)) mouseActions.onNodeLeave();
 });
-
+// --- Click on node
+echart.on('click', (p) => {
+  if (p.dataType !== 'node' && !isTouch(p)) mouseActions.onNodeClick(p.data);
+});
 // --- Double click on canvas
 echart.getZr().on('dblclick', (e) => {
   if (!e.target && !isTouch(e)) mouseActions.onCanvasDblClick();
 });
 
-// Mobile or hybrid events (touch or click)
 
-// --- Long-press on node
-echart.on('mousedown', (p) => {
-  if (p.dataType !== 'node') return;
-  
-  if (isTouch(p)) {
-    longPressTimer = setTimeout(() => {
-      mobileActions.onNodeLongPress(p.data);
-      longPressTimer = 'triggered';
-    }, 600);
-  }
-});
+// Mobile or hybrid events (touch or click)
 
 // --- Top on node or click on node
 //     mobile tap: isTouch is true and longPressTimer is not triggered
@@ -125,13 +127,26 @@ echart.on('mousedown', (p) => {
 echart.on('click', (p) => {
   if (p.dataType !== 'node') return;
 
-  if (isTouch(p)) {
-    if (longPressTimer !== 'triggered') mobileActions.onNodeTap(p.data.id); // Highlight node
+  if (isTouch(p) || state.hoveredNode != p.data.id) {
+    mobileActions.onNodeTap(p.data.id); // Highlight node
   } else {
     mouseActions.onNodeClick(p.data); // Navigate down
   }
-  clearTimeout(longPressTimer);
-  longPressTimer = null;
+
+});
+
+let longPressTimer = null;
+
+// --- Long-press on node
+echart.on('mousedown', (p) => {
+  if (p.dataType !== 'node') return;
+  
+
+    longPressTimer = setTimeout(() => {
+      mobileActions.onNodeLongPress(p.data);
+      longPressTimer = 'triggered';
+    }, 600);
+
 });
 
 // --- Long-press on canvas
@@ -147,26 +162,11 @@ echart.getZr().on('mousedown', (e) => {
   }
 });
 
-// Global Cleanup
+// Reset long press
 echart.getZr().on('mouseup', () => {
   if (longPressTimer !== 'triggered') clearTimeout(longPressTimer);
 });
 
-
-// Helper functions
-
-function navigateDown(d) {
-  state.hoveredNode = null;
-  if (state.currentView === 'overview' && d._type === 'parent') focusCategory(d._catId || d.id);
-  else if (state.currentView === 'category' && (d._type === 'child' || d._type === 'ext')) focusChildNode(d.id);
-  else if (state.currentView === 'child' && d._type === 'conn') focusChildNode(d.id);
-}
-
-function navigateUp() {
-  state.hoveredNode = null;
-  if (state.currentView === 'child') focusCategory(state.currentCat);
-  else if (state.currentView === 'category') goOverview();
-}
 
 // Responsive ------------------------------------------------------------------
 
