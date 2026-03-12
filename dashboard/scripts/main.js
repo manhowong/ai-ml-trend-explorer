@@ -122,7 +122,7 @@ echart.getZr().on('dblclick', (e) => {
 // Mobile events
 
 // --- Top on node (highlight node)
-echart.on('mousedown', (p) => {
+echart.on('pointerdown', (p) => {
     if (p.dataType === 'node' ) mobileActions.onNodeTap(p.data.id);
 });
 
@@ -130,7 +130,7 @@ let pressTimer;
 let isLongPress = false;
 
 // --- Long-press on node (navigate down 1 level)
-echart.on('mousedown', (p) => {
+echart.on('pointerdown', (p) => {
     if (p.dataType !== 'node') return;
     pressTimer = setTimeout(() => {
         mobileActions.onNodeLongPress(p.data);
@@ -139,7 +139,7 @@ echart.on('mousedown', (p) => {
 });
 
 // --- Long-press on canvas (navigate up 1 level)
-echart.getZr().on('mousedown', (e) => {
+echart.getZr().on('pointerdown', (e) => {
     if (e.target) return;
     mobileActions.onCanvasTap(); // Clear hover immediately on tap
     pressTimer = setTimeout(() => {
@@ -149,7 +149,7 @@ echart.getZr().on('mousedown', (e) => {
 });
 
 // --- Reset long press timer
-echart.getZr().on('mouseup', () => {
+echart.getZr().on('pointerup', () => {
     clearTimeout(pressTimer);
     isLongPress = false;
 });
