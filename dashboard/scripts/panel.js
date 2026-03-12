@@ -87,10 +87,11 @@ export function renderOverviewPanel() {
     <div class="instructions">
       <span>AI/ML topics are grouped by categories.</span>
       <ul class="bullet-list">
-        <li><b>Select</b> two months or more to see trends.</li>
-        <li><b>Click a node</b> or <b>a row in the list</b> to see more.</li>
-        <li><b>Double-click</b> (or <b>long-press</b> on mobile) on empty canvas to navigate back up.</li>
-        <li><b>Hover</b> over a node (or <b>long-press</b> a node on mobile) to see its links.</li>
+        <li><b>Click a node</b> (or <b>tap twice</b> on mobile) to go down a level.</li>
+        <li><b>Double-click</b> on empty canvas (or <b>long-press</b> on mobile) to navigate back up.</li>
+        <li><b>Hover</b> over a node (or <b>tap</b> on mobile) to highlight its links.</li>
+        <li><b>Select a date range</b> (> 1 month) to see trends.</li>
+        <li>You may also select a node by tapping on it in the <b>node list</b>.</li>
       </ul>
     </div>`;
 

@@ -72,7 +72,7 @@ const mouseActions = {
 
 const mobileActions = {
     onNodeTap: (id) => { state.hoveredNode = id; applyHover(id); },
-    onNodeLongPress: (data) => navigateDown(data),
+    onSameNodeTap: (data) => navigateDown(data),
     onCanvasTap: () => { state.hoveredNode = null; clearHover(); },
     onCanvasLongPress: () => navigateUp()
 };
@@ -124,22 +124,23 @@ echart.getZr().on('dblclick', (e) => {   // use getZr()
 
 // Mobile events
 
-// --- Top on node (highlight node)
+// --- Tap on node
 echart.on('click', (e) => {
-    if (e.dataType === 'node' && isTouch(e) ) mobileActions.onNodeTap(e.data.id);
+    if ( e.dataType === 'node' && isTouch(e) ) {
+        if (state.hoveredNode != e.data.id) {
+            // Tap on node first time, hightlight it
+            mobileActions.onNodeTap(e.data.id);
+        } else {
+            // Tap on same node again, navigate down
+            mobileActions.onSameNodeTap(e.data);
+        };
+    }
+    // Tap elsewhere, clear hover
+    if ( e.dataType != 'node' && isTouch(e) ) mobileActions.onCanvasTap();
 });
 
 let pressTimer = 0;
 let isLongPress = false;
-
-// --- Long-press on node (navigate down 1 level)
-echart.on('mousedown', (e) => {
-    if (e.dataType !== 'node') return;
-    pressTimer = setTimeout(() => {
-        mobileActions.onNodeLongPress(e.data);
-        isLongPress = true;;
-    }, 600);
-});
 
 // --- Long-press on canvas (navigate up 1 level)
 echart.getZr().on('mousedown', (e) => {   // use getZr()
@@ -151,11 +152,37 @@ echart.getZr().on('mousedown', (e) => {   // use getZr()
     }, 600);
 });
 
+// The following block works but not needed
+// --- Long-press on node (navigate down 1 level)
+// echart.on('mousedown', (e) => {
+//     if (e.dataType !== 'node') return;
+//     pressTimer = setTimeout(() => {
+//         mobileActions.onSameNodeTap(e.data);
+//         isLongPress = true;
+//     }, 600);
+// });
+
 // --- Reset long press timer
 echart.getZr().on('mouseup', () => {   // use getZr()
     clearTimeout(pressTimer);
     isLongPress = false;
 });
+
+// This reset long press timer
+const cancelInteraction = () => {
+  clearTimeout(pressTimer);
+  isLongPress = false;
+};
+
+// --- Cancel if finger lifts
+echart.getZr().on('mouseup', cancelInteraction);
+echart.getZr().on('touchend', cancelInteraction);
+
+// --- Cancel if finger/mouse moves too much
+echart.getZr().on('mousemove', cancelInteraction);
+
+// --- Cancel if finger slides off the chart area
+echart.getZr().on('globalout', cancelInteraction);
 
 
 // Responsive ------------------------------------------------------------------
