@@ -105,7 +105,7 @@ export function renderOverviewPanel() {
         <li><b>Long-press on empty canvas</b> to navigate back up.</li>
       </ul>
       <span>
-        To see <b>trends</b>, set a range ≥ 2 months in <span class="mockToggle">☰ GRAPH CONTROL</span>.
+        To see <b>trends</b>, set a range ≥ 2 months in <span class="mockToggle">☰ GRAPH CONTROL</span>
       </span>
       <span>You may also select a node by tapping the <b>node list</b>.</span>
     </div>`;
@@ -185,7 +185,7 @@ export function renderChildPanel() {
             <div class="rank-bar-wrap"><div class="rank-bar" style="width:${kwBars[i]}%"></div></div>
           </div>`).join('')}
        </div>`
-    : '<p class="empty-state">No relevant terms found in selected period.</p>';
+    : '<p class="empty-state">No topic-specific terms found in selected period.</p>';
 
   const connEdges = state.childEdges
     .filter(e => e.s === state.currentChild || e.t === state.currentChild)

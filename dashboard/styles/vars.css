@@ -6,7 +6,7 @@
   color-scheme: dark;
 
   --color-bg: #0f1117;
-  --color-text: #ddd;            /* e.g. default text color */
+  --color-text: #475569;            /* e.g. default text color */
   --color-text-strong: #e2e8f0;  /* Primary info: e.g. Current date range, node labels in panel */
   --color-muted: #94a3b8;        /* Secondary info: e.g. Headers, general text, rank bar, report link  */
   --color-muted-2: #64748b;      /* Nonessential elements A: e.g. rank bar values */
@@ -46,17 +46,18 @@
   --node-hover-shadow: #aaa;
   --ext-node-fill: #333;
   --ext-node-border: #444;
+
   --kbd-text: #141a26;
   --kbd-surface: #94a3b8;
-  --kbd-shade-1: #334155;
-  --kbd-shade-2: #64748b;
+  --kbd-shade-1: #64748b;
+  --kbd-shade-2: #334155;
 }
 
 [data-theme="light"] {
   color-scheme: light;
 
   --color-bg: #ffffff;
-  --color-text: #1f2937;         /* e.g. default text color */
+  --color-text: #9ca3af;         /* e.g. default text color */
   --color-text-strong: #0f172a;  /* Primary info: e.g. Current date range, node labels in panel */
   --color-muted: #4b5563;        /* Secondary info: e.g. Headers, general text, rank bar, report link  */
   --color-muted-2: #6b7280;      /* Nonessential elements A: e.g. rank bar values */
@@ -69,7 +70,7 @@
   --color-bg-alt: #eff1f5;
   --color-note: #6b7280;
 
-  --color-accent-banner: #1d1d1d; /* Accent color in banner: e.g. website caption */
+  --color-accent-banner: #0f172a; /* Accent color in banner: e.g. website caption */
   --color-accent: #b48e35;       /* Accent color 2: e.g. text in links, buttons, etc. */
   --color-white: #ffffff;
   --color-black: #000000;
@@ -96,6 +97,7 @@
   --node-hover-shadow: #64748b;
   --ext-node-fill: #9ca3af;
   --ext-node-border: #6b7280;
+
   --kbd-text: #0f172a;
   --kbd-surface: #e5e7eb;
   --kbd-shade-1: #cbd5e1;

@@ -28,7 +28,7 @@
   -webkit-mask-size: contain;
   mask-size: contain;  
   transition: background-color 0.3s ease; /* transition for the color change */
-  transform: translateY(3px);
+  transform: translateY(4px);
 }
 
 .github-icon:hover {
