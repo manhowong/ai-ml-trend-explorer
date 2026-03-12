@@ -5,7 +5,7 @@
 import { state, EDGE_WIDTH_SCALE } from './state.js';
 import {
   echart,
-  trendColor, makeLabel, nodeSize, circleAngles, buildAdjMap,
+  trendColor, themeVar, makeLabel, nodeSize, circleAngles, buildAdjMap,
   renderChart,
 } from './chart.js';
 import { updateRightPanel } from './panel.js';
@@ -88,7 +88,7 @@ export function goOverview() {
   const visibleEdges = state.showCrossEdges ? state.parentEdges : [];
   const links = visibleEdges.map(edge => {
     const w   = Math.max(0.5, edge.w / maxW * 5 * EDGE_WIDTH_SCALE);
-    const col = 'rgba(255,255,255,0.1)';
+    const col = themeVar('linkCross');
     return {
       source: edge.s, target: edge.t,
       lineStyle: { width: w, color: col, curveness: 0.15 },
@@ -181,7 +181,12 @@ export function focusCategory(catId) {
       group.forEach((id, gi) => {
         const child     = state.childMap[id];
         const extCat    = state.catMap[ecid];
-        const itemStyle = { color: '#333', borderColor: '#444', borderWidth: 1, opacity: 0.35 };
+        const itemStyle = {
+          color: themeVar('extNodeFill'),
+          borderColor: themeVar('extNodeBorder'),
+          borderWidth: 1,
+          opacity: 0.35,
+        };
         nodes.push({
           id:         child.id,
           symbolSize: nodeSize(child.papers, 'category') * 0.7,
@@ -221,7 +226,7 @@ export function focusCategory(catId) {
   const links = [
     ...visibleCrossEdges.map(e => {
       const w   = Math.max(0.5, e.w / maxW * 3 * EDGE_WIDTH_SCALE);
-      const col = 'rgba(255,255,255,0.04)';
+      const col = themeVar('linkCrossDim');
       return {
         source: e.s, target: e.t,
         lineStyle: { width: w, color: col, curveness: 0.1 },
@@ -230,7 +235,7 @@ export function focusCategory(catId) {
     }),
     ...visibleIntraEdges.map(e => {
       const w   = Math.max(0.5, e.w / maxW * 4 * EDGE_WIDTH_SCALE);
-      const col = 'rgba(255,255,255,0.12)';
+      const col = themeVar('linkIntra');
       return {
         source: e.s, target: e.t,
         lineStyle: { width: w, color: col, curveness: 0.1 },
@@ -314,7 +319,7 @@ export function focusChildNode(childId) {
   const maxW  = Math.max(...visibleEdges.map(e => e.w), 1);
   const links = visibleEdges.map(e => {
     const w   = Math.max(1, e.w / maxW * 5 * EDGE_WIDTH_SCALE);
-    const col = 'rgba(255,255,255,0.12)';
+    const col = themeVar('linkIntra');
     return {
       source: e.s, target: e.t,
       lineStyle: { width: w, color: col, curveness: 0.1 },

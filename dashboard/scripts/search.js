@@ -3,7 +3,7 @@
    ============================================================ */
 
 import { state }                               from './state.js';
-import { trendColor, formatCount, applyHover } from './chart.js';
+import { trendColor, themeVar, formatCount, applyHover } from './chart.js';
 import { focusCategory, focusChildNode }        from './views.js';
 
 
@@ -36,7 +36,7 @@ function getAllNodes() {
       papers:   child.papers,
       trend:    child.trend,
       catName:  cat ? cat.name  : '',
-      catColor: cat ? cat.color : '#94a3b8',
+      catColor: cat ? cat.color : themeVar('trendFlat'),
       disabled: !!child.isUnassigned,
     });
   });

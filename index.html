@@ -25,6 +25,9 @@
                 <a href="https://github.com/manhowong/ai-trends/issues/new" target="_blank">
                     <span class="github-icon"></span> Report an issue 
                 </a>
+                <button id="themeToggle" type="button" aria-pressed="true" title="Toggle light/dark theme">
+                    Theme: Dark
+                </button>
             </div>
 
         </div>
@@ -77,15 +80,15 @@
                 
                 <div id="legend">
                     <div class="legend-item">
-                        <span class="legend-dot" style="background:#e84b4b"></span>
+                        <span class="legend-dot" style="background:var(--trend-up)"></span>
                         Heating Up
                     </div>
                     <div class="legend-item">
-                        <span class="legend-dot" style="background:#541ffd"></span>
+                        <span class="legend-dot" style="background:var(--trend-down)"></span>
                         Cooling Off
                     </div>
                     <div class="legend-item">
-                        <span class="legend-dot" style="background:#94a3b8"></span>
+                        <span class="legend-dot" style="background:var(--trend-flat)"></span>
                         Stable / No Data
                     </div>
                     <p class="legend-note">Node size = article count</p>

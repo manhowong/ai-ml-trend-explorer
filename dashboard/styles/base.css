@@ -1,0 +1,40 @@
+﻿/* Reset & Base ============================================================= */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: system-ui, sans-serif;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bullet-list {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.bullet-list li {
+    margin-bottom: 8px;
+}
+
+.noBullet-list {
+    list-style-type:none;
+    padding-left: 15px;
+}
+
+.noBullet-list li {
+    margin-bottom: 8px;
+}
+
+

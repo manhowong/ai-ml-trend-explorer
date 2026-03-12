@@ -1,0 +1,69 @@
+﻿/* site-banner (page title) ===================================================== */
+
+#site-banner {
+    position: fixed;
+    z-index: 1;
+    align-items: center;
+    padding: 10px 20px;
+    pointer-events: none; /*To allow clickable elements underneath it*/
+}
+
+#site-banner h1 {
+    font-size: 55px;
+    /* font-weight: 300; */
+    color: var(--color-accent);
+    text-decoration: none;
+    font-family: "Book Antiqua", Georgia, "Times New Roman", Times, serif;
+}
+
+#site-info {
+    color: var(--color-muted);
+    padding-top: 10px;
+}
+
+#dateText {
+    font-size: 18px;
+    color: var(--color-text-strong);
+    z-index: 1;
+}
+
+#report-link, #report-link a {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: monospace;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 16px;
+    pointer-events: auto; /* Ensure it's clickable even when placed inside anti-click element*/
+}
+
+#report-link a:hover {
+    color: var(--color-accent);
+}
+
+#report-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#themeToggle {
+    pointer-events: auto;
+    border: 1px solid var(--color-surface-2);
+    background: var(--color-surface);
+    color: var(--color-accent);
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-family: monospace;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+#themeToggle:hover {
+    background: var(--color-surface-2);
+}
+
+

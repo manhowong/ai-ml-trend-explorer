@@ -1,0 +1,310 @@
+﻿/* Right Panel ============================================================== */
+
+#right-panel {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 10;
+    width: 32%;
+    min-width: min-content; /*Must fit the smallest element inside*/
+    min-height: calc(100% - 24px); /*Content fills the height of screen*/
+    max-height: calc(100% - 24px); /*So content doesn't overflow if it exceed screen height*/
+    display: flex;
+    flex-direction: column;
+    background: var(--color-panel-bg);
+    border: 1px solid var(--color-panel-border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 350;
+    overflow: hidden;
+}
+
+#right-panel.collapsed {
+    min-height: 0px;
+    transition: min-height 0.4s ease;
+}
+
+#right-panel.collapsed .info-box {
+    display: none;
+}
+
+#right-panel.collapsed #panel-footer {
+    border-top: 0px;
+}
+
+/* Panel toggle */
+
+#panelToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+    background: var(--color-surface);
+    color: var(--color-accent);
+    border: none;
+    border-radius: 8 8 0 0;
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 0.15s;
+    flex-shrink: 0;
+}
+
+#panelToggle:hover {
+    background: var(--color-surface-2);
+}
+
+#panelToggle::after {
+    content: "▼ HIDE";
+    font-family:monospace;
+    font-weight:bold;
+}
+
+#right-panel.collapsed #panelToggle {
+    margin-bottom: 0;
+    background: var(--color-surface);
+}
+
+#right-panel.collapsed #panelToggle:hover {
+    background: var(--color-surface-2);
+}
+
+#right-panel.collapsed #panelToggle::after {
+    content: "▲ NODE LIST";
+    color: var(--color-accent);
+    font-family:monospace;
+    font-weight:bold;
+}
+
+#right-panel.collapsed {
+    z-index: 8;  /* Move it just below sidebar, otherwise they may overlap on small screen */
+}
+
+/* Breadcrumb */
+
+#panel-breadcrumb {
+    display: flex;
+    align-items: left;
+    gap: 8px;
+    padding: 16px 16px;
+    border-bottom: 1px solid var(--color-panel-border);
+    flex-shrink: 0;
+    font-size: 17px;
+}
+
+#treeItems {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.breadcrumb-segment {
+    color: var(--color-text-strong);
+}
+
+.breadcrumb-segment.clickable {
+    color: var(--color-accent);
+    cursor: pointer;
+}
+
+.breadcrumb-segment.clickable:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-sep {
+    color: var(--color-muted-3);
+}
+
+/* Panel content & info boxes */
+
+#panelContent {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 1;
+    min-height: 0;
+}
+
+.info-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 14px 16px;
+    min-height: 0;
+}
+
+#info-top {
+    border-bottom: 1px solid var(--color-panel-border);
+}
+
+.info-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.info-box-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.info-sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.sort-select-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.sort-select {
+    padding: 2px 6px;
+    font-size: 12px;
+    background: var(--color-surface);
+    color: var(--color-accent);
+    border: 1px solid var(--color-surface-2);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.info-box-content {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-surface-2) transparent;
+    font-weight: 350;
+}
+
+.info-box-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.info-box-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.info-box-content::-webkit-scrollbar-thumb {
+    background: var(--color-surface-2);
+    border-radius: 2px;
+}
+
+/* Panel footer */
+
+#panel-footer {
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    min-width:max-content;
+    gap: 10px;
+    padding: 16px 16px;
+    border-top: 1px solid var(--color-panel-border);
+    flex-shrink: 0;
+    font-size: 13px;
+}
+
+#panel-footer a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+#panel-footer a:hover {
+    text-decoration: underline;
+    color: var(--color-muted);
+}
+
+
+/* Ranked List ============================================================== */
+
+.ranked-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ranked-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    cursor: default;
+    border-radius: 4px;
+    padding: 2px 4px;
+    transition: 0.15s;
+}
+
+.ranked-row:hover {
+    background: var(--color-surface);
+}
+
+.ranked-row--disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.ranked-row--disabled:hover {
+    background: transparent;
+}
+
+.rank-num {
+    width: 16px;
+    text-align: right;
+    color: var(--color-muted-3);
+    flex-shrink: 0;
+    font-size: 12px;
+}
+
+.rank-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.rank-name {
+    flex: 1;
+    color: var(--color-text-strong);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rank-count {
+    font-size: 12px;
+    color: var(--color-muted-2);
+    flex-shrink: 0;
+}
+
+.rank-bar-title {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--color-muted);
+    margin: 0;
+    letter-spacing: 0.04em;
+}
+
+.rank-bar-wrap {
+    width: 80px;
+    height: 8px;
+    background: var(--color-surface);
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.rank-bar {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--color-muted);
+}
+
+

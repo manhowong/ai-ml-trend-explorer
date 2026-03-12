@@ -5,6 +5,7 @@
 import { state }                                       from './state.js';
 import { loadData, applyNormalizedData, initializeDerivedData } from './data.js';
 import { echart, initializeRichStyles,
+         refreshThemeVars,
          applyHover, clearHover,
          fitScreen, updateFontSize, resetFontSize,
          getChartCenter }                              from './chart.js';
@@ -24,6 +25,44 @@ window.clearHover     = clearHover;
 window.focusCategory  = focusCategory;
 window.focusChildNode = focusChildNode;
 window.setSortMode    = setSortMode;
+
+// Theme toggle ---------------------------------------------------------------
+
+function rerenderCurrentView() {
+  if (state.currentView === 'overview') return goOverview();
+  if (state.currentView === 'category') return focusCategory(state.currentCat);
+  if (state.currentView === 'child')    return focusChildNode(state.currentChild);
+}
+
+function applyTheme(theme, persist = true) {
+  document.documentElement.setAttribute('data-theme', theme);
+  if (persist) localStorage.setItem('theme', theme);
+
+  const btn = document.getElementById('themeToggle');
+  if (btn) {
+    btn.textContent = theme === 'dark' ? 'Theme: Dark' : 'Theme: Light';
+    btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+  }
+
+  refreshThemeVars();
+  if (state.cats.length) {
+    initializeRichStyles();
+    rerenderCurrentView();
+  }
+}
+
+function initThemeToggle() {
+  const saved = localStorage.getItem('theme');
+  applyTheme(saved || 'dark', false);
+  const btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const next = (document.documentElement.getAttribute('data-theme') || 'dark') === 'dark'
+      ? 'light'
+      : 'dark';
+    applyTheme(next, true);
+  });
+}
 
 
 // Sidebar controls ------------------------------------------------------------
@@ -207,6 +246,7 @@ document.addEventListener('click', e => {
 // Boot ------------------------------------------------------------------------
 
 async function initializeApp() {
+  initThemeToggle();
   await loadData();
   buildDateRangeControls();
   applyNormalizedData();

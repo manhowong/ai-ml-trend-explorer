@@ -5,6 +5,38 @@
 
 import { state, DEFAULT_FONT_SIZE } from './state.js';
 
+let themeVars = null;
+
+function readThemeVars() {
+  const styles = getComputedStyle(document.documentElement);
+  themeVars = {
+    trendUp:  styles.getPropertyValue('--trend-up').trim()  || '#e84b4b',
+    trendDown: styles.getPropertyValue('--trend-down').trim() || '#541ffd',
+    trendFlat: styles.getPropertyValue('--trend-flat').trim() || '#94a3b8',
+    chartLabel: styles.getPropertyValue('--chart-label').trim() || '#ccc',
+    chartLabelDim: styles.getPropertyValue('--chart-label-dim').trim() || '#444',
+    chartCount: styles.getPropertyValue('--chart-count').trim() || '#fff',
+    chartCountDim: styles.getPropertyValue('--chart-count-dim').trim() || '#555',
+    badgeDimText: styles.getPropertyValue('--chart-badge-dim-text').trim() || '#777',
+    badgeDimBg: styles.getPropertyValue('--chart-badge-dim-bg').trim() || '#2a2a2a',
+    linkCross: styles.getPropertyValue('--link-cross').trim() || 'rgba(255,255,255,0.10)',
+    linkIntra: styles.getPropertyValue('--link-intra').trim() || 'rgba(255,255,255,0.12)',
+    linkCrossDim: styles.getPropertyValue('--link-cross-dim').trim() || 'rgba(255,255,255,0.04)',
+    extNodeFill: styles.getPropertyValue('--ext-node-fill').trim() || '#333',
+    extNodeBorder: styles.getPropertyValue('--ext-node-border').trim() || '#444',
+  };
+}
+
+export function refreshThemeVars() {
+  readThemeVars();
+  state.richStyles = buildRichStyles();
+}
+
+export function themeVar(key) {
+  if (!themeVars) readThemeVars();
+  return themeVars[key];
+}
+
 // ── ECharts instance ─────────────────────────────────────────
 
 export const echart = echarts.init(
@@ -17,9 +49,10 @@ export const echart = echarts.init(
 // ── Colour / size helpers ────────────────────────────────────
 
 export function trendColor(trend) {
-  if (trend ===  1) return '#e84b4b';
-  if (trend === -1) return '#541ffd';
-  return '#94a3b8';
+  if (!themeVars) readThemeVars();
+  if (trend ===  1) return themeVars.trendUp;
+  if (trend === -1) return themeVars.trendDown;
+  return themeVars.trendFlat;
 }
 
 export function formatCount(n) {
@@ -72,11 +105,12 @@ export function makeLabel(name, papers, catName, catColor, dim = false) {
 
 /** Rebuild the `rich` style map from state.allColors. */
 export function buildRichStyles() {
+  if (!themeVars) readThemeVars();
   const rich = {
-    name:     { fontSize: 10, color: '#ccc', padding: [0, 0, 2, 0], align: 'center' },
-    nameDim:  { fontSize: 10, color: '#444', padding: [0, 0, 2, 0], align: 'center' },
-    count:    { fontSize:  8, fontWeight: 'bold', color: '#fff', padding: [0, 0, 2, 0], align: 'center' },
-    countDim: { fontSize:  8, fontWeight: 'bold', color: '#555', padding: [0, 0, 2, 0], align: 'center' },
+    name:     { fontSize: 10, color: themeVars.chartLabel, padding: [0, 0, 2, 0], align: 'center' },
+    nameDim:  { fontSize: 10, color: themeVars.chartLabelDim, padding: [0, 0, 2, 0], align: 'center' },
+    count:    { fontSize:  8, fontWeight: 'bold', color: themeVars.chartCount, padding: [0, 0, 2, 0], align: 'center' },
+    countDim: { fontSize:  8, fontWeight: 'bold', color: themeVars.chartCountDim, padding: [0, 0, 2, 0], align: 'center' },
   };
 
   state.allColors.forEach(hex => {
@@ -86,7 +120,7 @@ export function buildRichStyles() {
       borderRadius: 3, padding: [2, 5], align: 'center',
     };
     rich[key + 'Dim'] = {
-      fontSize: 7, color: '#777', backgroundColor: '#2a2a2a',
+      fontSize: 7, color: themeVars.badgeDimText, backgroundColor: themeVars.badgeDimBg,
       borderRadius: 3, padding: [2, 5], align: 'center',
     };
   });
@@ -96,6 +130,7 @@ export function buildRichStyles() {
 
 /** Derive allColors from cats and (re)build richStyles. */
 export function initializeRichStyles() {
+  readThemeVars();
   state.allColors  = [...new Set(state.cats.map(c => c.color))];
   state.richStyles = buildRichStyles();
 }
@@ -137,7 +172,7 @@ export function renderChart(nodes, links) {
       data:      nodes,
       links,
       emphasis:  { disabled: true },
-      label:     { show: true, color: '#ccc', fontSize: 10, silent: true}, // silent labels (i.e. no response to click)
+      label:     { show: true, color: themeVar('chartLabel'), fontSize: 10, silent: true}, // silent labels (i.e. no response to click)
       lineStyle: { opacity: 1 },
       symbol:    'circle',
       cursor:    'pointer',

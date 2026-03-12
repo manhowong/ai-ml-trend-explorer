@@ -1,0 +1,91 @@
+﻿/* ============================================================
+   vars.css - Theme tokens
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  --color-bg: #0f1117;
+  --color-text: #ddd;
+  --color-text-strong: #e2e8f0;
+  --color-muted: #94a3b8;
+  --color-muted-2: #64748b;
+  --color-muted-3: #475569;
+
+  --color-panel-bg: #000;
+  --color-panel-border: #222;
+  --color-surface: #1e293b;
+  --color-surface-2: #334155;
+  --color-bg-alt: #141a26;
+  --color-note: #666;
+
+  --color-accent: #b3a369;
+  --color-white: #fff;
+  --color-black: #000;
+
+  --color-ink: #333;
+  --color-ink-2: #444;
+  --color-ink-3: #2a2a2a;
+  --color-ink-4: #555;
+
+  --trend-up: #e84b4b;
+  --trend-down: #541ffd;
+  --trend-flat: #94a3b8;
+
+  --chart-label: #ccc;
+  --chart-label-dim: #444;
+  --chart-count: #fff;
+  --chart-count-dim: #555;
+  --chart-badge-dim-text: #777;
+  --chart-badge-dim-bg: #2a2a2a;
+
+  --link-cross: rgba(255,255,255,0.10);
+  --link-intra: rgba(255,255,255,0.12);
+  --link-cross-dim: rgba(255,255,255,0.04);
+  --ext-node-fill: #333;
+  --ext-node-border: #444;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --color-bg: #fcf8f5;
+  --color-text: #1f2937;
+  --color-text-strong: #0f172a;
+  --color-muted: #4b5563;
+  --color-muted-2: #6b7280;
+  --color-muted-3: #9ca3af;
+
+  --color-panel-bg: #ffffff;
+  --color-panel-border: #e5e7eb;
+  --color-surface: #e5e7eb;
+  --color-surface-2: #d1d5db;
+  --color-bg-alt: #e9edf5;
+  --color-note: #6b7280;
+
+  --color-accent: #8f6d1c;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-ink: #9ca3af;
+  --color-ink-2: #9ca3af;
+  --color-ink-3: #e5e7eb;
+  --color-ink-4: #9ca3af;
+
+  --trend-up: #d14343;
+  --trend-down: #3b2bd9;
+  --trend-flat: #6b7280;
+
+  --chart-label: #1f2937;
+  --chart-label-dim: #9ca3af;
+  --chart-count: #111827;
+  --chart-count-dim: #6b7280;
+  --chart-badge-dim-text: #6b7280;
+  --chart-badge-dim-bg: #e5e7eb;
+
+  --link-cross: rgba(15,23,42,0.16);
+  --link-intra: rgba(15,23,42,0.22);
+  --link-cross-dim: rgba(15,23,42,0.10);
+  --ext-node-fill: #9ca3af;
+  --ext-node-border: #6b7280;
+}

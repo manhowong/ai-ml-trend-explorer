@@ -1,0 +1,104 @@
+﻿/* Responsive Breakpoints =================================================== */
+
+/* Tablet (max-width: 1024px) */
+
+@media (max-width: 1024px) {
+
+    #site-banner h1 {
+        font-size: 45px;
+    }
+
+}
+
+/* Mobile (max-width: 768px) */
+
+@media (max-width: 768px) {
+
+    body {
+        overflow: hidden;
+        width: 100dvw;
+        height: 100dvh;
+    }
+
+    #main-container {
+        width: 100dvw;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    #site-banner {
+        padding: 10px 14px;
+    }
+
+    #site-banner h1 {
+        font-size: 35px;
+    }
+
+    #chart-wrapper {
+        position: fixed;
+        inset: 0;
+        width: 100dvw;
+        height: 100dvh;
+    }
+
+    #chart {
+        width: 100%;
+        height: 100%;
+    }
+
+    /*Move sidebar to top right*/
+    #sidebar {
+        top: 8px;
+        right: 8px;
+        bottom: auto;
+        left: auto;
+        background: var(--color-bg-alt);
+    }
+
+    #sidebarToggle::after {
+        content: "▲ HIDE";
+    }
+
+    #right-panel {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100dvw;
+        max-height: 90dvh;
+        min-width: auto; /*Set to min-content for large screen, but auto here*/
+        border-radius: 12px 12px 0 0;
+        background: var(--color-bg-alt);
+    }
+
+    .rank-bar-wrap {
+        width: 56px;
+    }
+}
+
+/* Small mobile (max-width: 480px) */
+
+@media (max-width: 480px) {
+
+    #site-banner h1 {
+        font-size: 30px;
+    }
+
+    .date-range-row {
+        flex-wrap: wrap;
+    }
+
+    .date-range-select {
+        width: 100%;
+    }
+
+    .date-range-sep {
+        display: none;
+    }
+
+    .rank-bar-wrap {
+        width: 46px;
+    }
+
+}
+
+
