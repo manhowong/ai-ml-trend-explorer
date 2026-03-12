@@ -85,14 +85,23 @@ export function renderOverviewPanel() {
 
   const bottomHTML = `
     <div class="instructions">
-      <span>AI/ML topics are grouped by categories.</span>
+      <span><b>Desktop (best):</b></span>
       <ul class="bullet-list">
-        <li><b>Click a node</b> (or <b>tap twice</b> on mobile) to go down a level.</li>
-        <li><b>Double-click</b> on empty canvas (or <b>long-press</b> on mobile) to navigate back up.</li>
-        <li><b>Hover</b> over a node (or <b>tap</b> on mobile) to highlight its links.</li>
-        <li><b>Select a date range</b> (> 1 month) to see trends.</li>
-        <li>You may also select a node by tapping on it in the <b>node list</b>.</li>
+        <li><b>Click a node</b> to go down a level.</li>
+        <li><b>Hover</b> over a node to highlight its links.</li>
+        <li><b>Double-click on empty canvas</b> to navigate back up.</li>
+        <li><span class="mockKbd">Ctrl</span> + <span class="mockKbd">K</span> to look up a node.</li>
       </ul>
+      <span><b>Mobile:</b></span>
+      <ul class="bullet-list">
+        <li><b>Tap</b> a node <b>once</b> to highlight its links.</li>
+        <li><b>Tap</b> a node <b>twice</b> to go down a level.</li>
+        <li><b>Long-press on empty canvas</b> to navigate back up.</li>
+      </ul>
+      <span>
+        Select a range (> 1 month) in <span class="mockToggle">☰ GRAPH CONTROL</span> to see trends.
+      </span>
+      <span>You may also select a node by tapping the <b>node list</b>.</span>
     </div>`;
 
   setPanelContent('info-top',    'Categories', sortDropdown, topHTML);
