@@ -6,11 +6,11 @@
   color-scheme: dark;
 
   --color-bg: #0f1117;
-  --color-text: #ddd;
-  --color-text-strong: #e2e8f0;
-  --color-muted: #94a3b8;
-  --color-muted-2: #64748b;
-  --color-muted-3: #475569;
+  --color-text: #ddd;            /* e.g. default text color */
+  --color-text-strong: #e2e8f0;  /* Primary info: e.g. Current date range, node labels in panel */
+  --color-muted: #94a3b8;        /* Secondary info: e.g. Headers, general text, rank bar, report link  */
+  --color-muted-2: #64748b;      /* Nonessential elements A: e.g. rank bar values */
+  --color-muted-3: #475569;      /* Nonessential elements B: e.g. rank number, placeholders */
 
   --color-panel-bg: #000;
   --color-panel-border: #222;
@@ -19,14 +19,10 @@
   --color-bg-alt: #141a26;
   --color-note: #666;
 
-  --color-accent: #b3a369;
+  --color-accent-banner: #b3a369; /* Accent color in banner: e.g. website caption */
+  --color-accent: #b3a369;       /* Accent color: e.g. website caption, text in links, buttons, etc. */
   --color-white: #fff;
   --color-black: #000;
-
-  --color-ink: #333;
-  --color-ink-2: #444;
-  --color-ink-3: #2a2a2a;
-  --color-ink-4: #555;
 
   --trend-up: #e84b4b;
   --trend-down: #541ffd;
@@ -42,35 +38,41 @@
   --link-cross: rgba(255,255,255,0.10);
   --link-intra: rgba(255,255,255,0.12);
   --link-cross-dim: rgba(255,255,255,0.04);
+  --link-hover-active: rgba(255,255,255,0.25);
+  --link-hover-dim: rgba(255,255,255,0.02);
+  --node-dim-fill: #333;
+  --node-dim-border: #444;
+  --node-hover-border: #fff;
+  --node-hover-shadow: #aaa;
   --ext-node-fill: #333;
   --ext-node-border: #444;
+  --kbd-text: #141a26;
+  --kbd-surface: #94a3b8;
+  --kbd-shade-1: #334155;
+  --kbd-shade-2: #64748b;
 }
 
 [data-theme="light"] {
   color-scheme: light;
 
-  --color-bg: #fcf8f5;
-  --color-text: #1f2937;
-  --color-text-strong: #0f172a;
-  --color-muted: #4b5563;
-  --color-muted-2: #6b7280;
-  --color-muted-3: #9ca3af;
+  --color-bg: #ffffff;
+  --color-text: #1f2937;         /* e.g. default text color */
+  --color-text-strong: #0f172a;  /* Primary info: e.g. Current date range, node labels in panel */
+  --color-muted: #4b5563;        /* Secondary info: e.g. Headers, general text, rank bar, report link  */
+  --color-muted-2: #6b7280;      /* Nonessential elements A: e.g. rank bar values */
+  --color-muted-3: #9ca3af;      /* Nonessential elements B: e.g. rank number, placeholders */
 
-  --color-panel-bg: #ffffff;
-  --color-panel-border: #e5e7eb;
+  --color-panel-bg: #eff1f5;
+  --color-panel-border: #cfd1d3;
   --color-surface: #e5e7eb;
   --color-surface-2: #d1d5db;
-  --color-bg-alt: #e9edf5;
+  --color-bg-alt: #eff1f5;
   --color-note: #6b7280;
 
-  --color-accent: #8f6d1c;
+  --color-accent-banner: #1d1d1d; /* Accent color in banner: e.g. website caption */
+  --color-accent: #b48e35;       /* Accent color 2: e.g. text in links, buttons, etc. */
   --color-white: #ffffff;
   --color-black: #000000;
-
-  --color-ink: #9ca3af;
-  --color-ink-2: #9ca3af;
-  --color-ink-3: #e5e7eb;
-  --color-ink-4: #9ca3af;
 
   --trend-up: #d14343;
   --trend-down: #3b2bd9;
@@ -86,6 +88,16 @@
   --link-cross: rgba(15,23,42,0.16);
   --link-intra: rgba(15,23,42,0.22);
   --link-cross-dim: rgba(15,23,42,0.10);
+  --link-hover-active: rgba(15,23,42,0.45);
+  --link-hover-dim: rgba(15,23,42,0.08);
+  --node-dim-fill: #e5e7eb;
+  --node-dim-border: #cbd5e1;
+  --node-hover-border: #ffffff;
+  --node-hover-shadow: #64748b;
   --ext-node-fill: #9ca3af;
   --ext-node-border: #6b7280;
+  --kbd-text: #0f172a;
+  --kbd-surface: #e5e7eb;
+  --kbd-shade-1: #cbd5e1;
+  --kbd-shade-2: #94a3b8;
 }

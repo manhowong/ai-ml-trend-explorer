@@ -18,8 +18,8 @@
 }
 
 .github-icon {
-  width: 12px;
-  height: 12px;
+  width: 17px;
+  height: 17px;
   display:inline-block;
   background-color: var(--color-muted); /* Initial Icon Color */
   /* GitHub Icon Mask */
@@ -28,6 +28,7 @@
   -webkit-mask-size: contain;
   mask-size: contain;  
   transition: background-color 0.3s ease; /* transition for the color change */
+  transform: translateY(3px);
 }
 
 .github-icon:hover {
@@ -63,10 +64,10 @@
     padding: 2px 3px;
     font-family: monospace;
     font-weight: bold;
-    background: var(--color-muted);
-    color: var(--color-bg-alt);
-    border: 1px solid var(--color-surface-2);
-    box-shadow: 1px 3px 2px var(--color-surface-2), 0 2px 0 1px var(--color-muted-2);
+    background: var(--kbd-surface);
+    color: var(--kbd-text);
+    border: 1px solid var(--kbd-shade-1);
+    box-shadow: 1px 3px 2px var(--kbd-shade-1), 0 2px 0 1px var(--kbd-shade-2);
     border-radius: 3px;
     font-size: 11px;
 }

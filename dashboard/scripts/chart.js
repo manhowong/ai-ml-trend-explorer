@@ -22,6 +22,12 @@ function readThemeVars() {
     linkCross: styles.getPropertyValue('--link-cross').trim() || 'rgba(255,255,255,0.10)',
     linkIntra: styles.getPropertyValue('--link-intra').trim() || 'rgba(255,255,255,0.12)',
     linkCrossDim: styles.getPropertyValue('--link-cross-dim').trim() || 'rgba(255,255,255,0.04)',
+    linkHoverActive: styles.getPropertyValue('--link-hover-active').trim() || 'rgba(255,255,255,0.25)',
+    linkHoverDim: styles.getPropertyValue('--link-hover-dim').trim() || 'rgba(255,255,255,0.02)',
+    nodeDimFill: styles.getPropertyValue('--node-dim-fill').trim() || '#333',
+    nodeDimBorder: styles.getPropertyValue('--node-dim-border').trim() || '#444',
+    nodeHoverBorder: styles.getPropertyValue('--node-hover-border').trim() || '#fff',
+    nodeHoverShadow: styles.getPropertyValue('--node-hover-shadow').trim() || '#aaa',
     extNodeFill: styles.getPropertyValue('--ext-node-fill').trim() || '#333',
     extNodeBorder: styles.getPropertyValue('--ext-node-border').trim() || '#444',
   };
@@ -195,15 +201,15 @@ export function applyHover(hoveredId) {
     const tc    = trendColor(orig.trend);
 
     const itemStyle = isDim
-      ? { color: '#333', borderColor: '#444', borderWidth: 1, opacity: 0.12 }
+      ? { color: themeVar('nodeDimFill'), borderColor: themeVar('nodeDimBorder'), borderWidth: 1, opacity: 0.12 }
       : {
           color:       tc,
-          borderColor: node.id === hoveredId ? '#fff' : tc,
+          borderColor: node.id === hoveredId ? themeVar('nodeHoverBorder') : tc,
           borderWidth: node.id === hoveredId ? 3 : (orig._type === 'focus' ? 3 : 2),
           borderWidth: orig._type === 'focus' ? 3 : 2,
           opacity:     orig._type === 'ext'   ? 0.6 : 0.9,
           shadowBlur:  node.id === hoveredId ? 20 : 0,
-          shadowColor: node.id === hoveredId ? '#aaa' : 'transparent',
+          shadowColor: node.id === hoveredId ? themeVar('nodeHoverShadow') : 'transparent',
         };
 
     return {
@@ -231,7 +237,7 @@ export function applyHover(hoveredId) {
       target: link.target,
       lineStyle: {
         width:     isActive ? link._origWidth * 1.3 : 0.3,
-        color:     isActive ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.02)',
+        color:     isActive ? themeVar('linkHoverActive') : themeVar('linkHoverDim'),
         curveness: link.lineStyle.curveness,
       },
       _origWidth: link._origWidth,

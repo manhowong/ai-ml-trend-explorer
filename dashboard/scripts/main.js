@@ -40,7 +40,6 @@ function applyTheme(theme, persist = true) {
 
   const btn = document.getElementById('themeToggle');
   if (btn) {
-    btn.textContent = theme === 'dark' ? 'Theme: Dark' : 'Theme: Light';
     btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
   }
 
@@ -53,7 +52,7 @@ function applyTheme(theme, persist = true) {
 
 function initThemeToggle() {
   const saved = localStorage.getItem('theme');
-  applyTheme(saved || 'dark', false);
+  applyTheme(saved || 'light', false);
   const btn = document.getElementById('themeToggle');
   if (!btn) return;
   btn.addEventListener('click', () => {
