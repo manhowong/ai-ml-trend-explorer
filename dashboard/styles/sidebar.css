@@ -24,6 +24,7 @@
     border-radius: 8px 8px 0 0;
     font-size: 12px;
     font-family:monospace;
+    text-transform: uppercase;
     font-weight:bold;
     cursor: pointer;
     transition: color 0.15s;
@@ -34,8 +35,25 @@
     background: var(--color-surface-2);
 }
 
-#sidebarToggle::after {
-    content: "\23F7\2003 HIDE";
+/* Intial toggle label */
+
+#sidebar .initial-label {
+  display: inline-block;
+}
+
+#sidebar .transformed-label {
+  display: none;
+}
+
+/* Transformed toggle label after sidebar collapsed*/
+
+#sidebar.collapsed .initial-label {
+  display: none;
+}
+
+#sidebar.collapsed .transformed-label {
+  display: inline-block;
+  padding: 8px 14px;
 }
 
 #sidebar.collapsed #sidebarContent {
@@ -45,11 +63,6 @@
 
 #sidebar.collapsed #sidebarToggle{
     border-radius: 8px;
-}
-
-#sidebar.collapsed #sidebarToggle::after {
-    content: "\2630\2003 GRAPH CONTROL";
-    padding: 8px 14px;
 }
 
 #sidebar.collapsed {

@@ -19,7 +19,8 @@
 #slash-mark::after {
     content: "/";
     font-size: larger;
-    font-weight: bold;
+    font-weight: bolder;
+    font-family: Tahoma, Verdana, "Book Antiqua", Georgia, serif;
     color: var(--color-accent); 
     line-height: 0px;  /* Set to 0 so it's size does not affect line spacing */
 }

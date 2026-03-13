@@ -24,21 +24,20 @@
 /* Base settings applied to specific icons */
 .icon::before {
   display: inline-block;
-  font-family: "Arial Unicode MS", "Segoe UI Symbol", sans-serif;
   font-weight: bold;
-  padding-right: 5px;
+  padding-right: 6px;
 }
 
 .screen-icon::before {
-  content: "\25A3"; /* ▣ + space */
+  content: "\25A3"; /* ▣ */
 }
 
 .search-icon::before {
-  content: "\2315"; /* ⌕ + space */
+  content: "\2315"; /* ⌕ */
 }
 
 .anticlock-icon::before {
-  content: "\21BA"; /* ↺ + space */
+  content: "\21BA"; /* ↺ */
 }
 
 .anticlock-nospace-icon::before {
@@ -46,8 +45,37 @@
   padding-right: 0px;
 }
 
-.menu-icon::before {
-  content: "\2630"; /* ☰ + space */
+.nodes-icon::before {
+  content: "\2234";  /* ∴ */
+  display: inline-block;
+  font-size: 20px;
+  margin-right: 8px;
+  transform: rotate(45deg); /* Rotate 45deg for aesthetic */
+}
+
+.down-icon::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border-right: 2px solid var(--color-accent); /* Two borders form an L shape */
+  border-bottom: 2px solid var(--color-accent);
+  transform: rotate(45deg) translateY(-3px); /* Rotate 45deg to point down */
+                                             /* and shift to align with text */
+}
+
+.hamburger-icon::before { /* Three-line menu icon */
+  content:"";
+  display: inline-block;
+  width: 12px; /* Width of each line */
+  height: 1px; /* Height of each line */
+  background: var(--color-accent);
+  box-shadow: 0 -4px 0 0 var(--color-accent), /* Create bottom line */
+              0 4px 0 0 var(--color-accent); /* Create top line */
+  vertical-align: middle;
+  transform: translateY(-1px); /* Shift to align with text */
+  margin-right: 6px;
 }
 
 .github-icon {
@@ -78,7 +106,7 @@
     color: var(--color-accent);
     border: 1px solid var(--color-surface-2);
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 13px;
     cursor: pointer;
     transition: background 0.15s;
 }

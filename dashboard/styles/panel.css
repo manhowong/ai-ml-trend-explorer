@@ -45,6 +45,9 @@
     border: none;
     border-radius: 8 8 0 0;
     font-size: 12px;
+    font-family:monospace;
+    font-weight:bold;
+    text-transform: uppercase;
     cursor: pointer;
     transition: color 0.15s;
     flex-shrink: 0;
@@ -54,10 +57,24 @@
     background: var(--color-surface-2);
 }
 
-#panelToggle::after {
-    content: "\23F7\2003 HIDE";
-    font-family:monospace;
-    font-weight:bold;
+/* Intial toggle label */
+
+#right-panel .initial-label {
+  display: inline-block;
+}
+
+#right-panel .transformed-label {
+  display: none;
+}
+
+/* Transformed toggle label after sidebar collapsed*/
+
+#right-panel.collapsed .initial-label {
+  display: none;
+}
+
+#right-panel.collapsed .transformed-label {
+  display: inline-block;
 }
 
 #right-panel.collapsed #panelToggle {
@@ -69,12 +86,6 @@
     background: var(--color-surface-2);
 }
 
-#right-panel.collapsed #panelToggle::after {
-    content: "\26EC\2003 NODE LIST";
-    color: var(--color-accent);
-    font-family:monospace;
-    font-weight:bold;
-}
 
 #right-panel.collapsed {
     z-index: 8;  /* Move it just below sidebar, otherwise they may overlap on small screen */

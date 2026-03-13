@@ -55,8 +55,9 @@
         background: var(--color-bg-alt);
     }
 
-    #sidebarToggle::after {
-        content: "\23F6\2003 HIDE";
+    /*Switch down icon direction to up*/
+    #sidebarToggle .down-icon::before {
+        transform: rotate(225deg) translateY(-1px);
     }
 
     #right-panel {
