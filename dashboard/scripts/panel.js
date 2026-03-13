@@ -91,23 +91,28 @@ export function renderOverviewPanel() {
 
   const bottomHTML = `
     <div class="instructions">
-      <span><b>Desktop</b> (optimal):</span>
+
+      <span><i>Desktop</i></span>
       <ul class="noBullet-list">
-        <li><b>Click a node</b> to go down a level.</li>
-        <li><b>Hover</b> over a node to highlight its links.</li>
-        <li><b>Double-click on empty canvas</b> to navigate back up.</li>
-        <li><span class="mockKbd">Ctrl</span> + <span class="mockKbd">K</span> to look up a node.</li>
+        <li><b>Click</b> a node to go down a level.</li>
+        <li><b>Double-click on empty space</b> to go up a level.</li>
       </ul>
-      <span><b>Mobile</b>:</span>
+
+      <span><i>Mobile</i></span>
       <ul class="noBullet-list">
-        <li><b>Tap</b> a node <b>once</b> to highlight its links.</li>
-        <li><b>Tap</b> the node <b>again</b> to go down a level.</li>
-        <li><b>Long-press on empty canvas</b> to navigate back up.</li>
+        <li><b>Tap</b> a node <b>twice</b> to go down a level.</li>
+        <li><b>Long-press on empty space</b> to go up a level.</li>
       </ul>
+
+      <span>
+          You can also go to a node in <b>this panel</b> or by <b>search</b>: <br /> 
+          Press <span class="mockKbd">Ctrl</span> + <span class="mockKbd">K</span> or 
+          "Go to Topics" in <span class="mockToggle">☰ GRAPH CONTROL</span>
+      </span>
+
       <span>
         To see <b>trends</b>, set a range ≥ 2 months in <span class="mockToggle">☰ GRAPH CONTROL</span>
       </span>
-      <span>You may also select a node by tapping the <b>node list</b>.</span>
     </div>`;
 
   setPanelContent('info-top',    'Categories', sortDropdown, topHTML);
