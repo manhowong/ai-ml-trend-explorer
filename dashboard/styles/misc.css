@@ -59,9 +59,21 @@
   width: 6px;
   height: 6px;
   margin-right: 8px;
-  border-right: 2px solid var(--color-accent); /* Two borders form an L shape */
-  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid currentColor; /* Two borders form an L shape */
+  border-bottom: 2px solid currentColor;
   transform: rotate(45deg) translateY(-3px); /* Rotate 45deg to point down */
+                                             /* and shift to align with text */
+}
+
+.up-icon::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border-right: 2px solid currentColor; /* Two borders form an L shape */
+  border-bottom: 2px solid currentColor;
+  transform: rotate(225deg) translateY(-1px); /* Rotate 225deg to point up */
                                              /* and shift to align with text */
 }
 
@@ -70,9 +82,9 @@
   display: inline-block;
   width: 12px; /* Width of each line */
   height: 1px; /* Height of each line */
-  background: var(--color-accent);
-  box-shadow: 0 -4px 0 0 var(--color-accent), /* Create bottom line */
-              0 4px 0 0 var(--color-accent); /* Create top line */
+  background: currentColor;
+  box-shadow: 0 -4px 0 0 currentColor, /* Create top line */
+              0 4px 0 0 currentColor; /* Create bottom line */
   vertical-align: middle;
   transform: translateY(-1px); /* Shift to align with text */
   margin-right: 6px;
@@ -82,7 +94,7 @@
   width: 17px;
   height: 17px;
   display:inline-block;
-  background-color: var(--color-muted); /* Initial Icon Color */
+  background-color: currentColor; /* Initial Icon Color */
   /* GitHub Icon Mask */
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z'/%3E%3C/svg%3E") no-repeat center;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z'/%3E%3C/svg%3E") no-repeat center;
@@ -90,10 +102,6 @@
   mask-size: contain;  
   transition: background-color 0.3s ease; /* transition for the color change */
   transform: translateY(4px);
-}
-
-.github-icon:hover {
-  background-color: var(--color-accent);
 }
 
 /* Form buttons */
@@ -181,7 +189,7 @@ input[type="checkbox"]:checked + .ui-switch .ui-switch-thumb {
     font-weight: bold;
     text-transform: uppercase;
     background: var(--color-surface);
-    color: var(--color-accent);
+    color: var(--color-accent2);
     border: 1px solid var(--color-surface-2);
     border-radius: 5px;
     font-size: 13px;
@@ -189,9 +197,9 @@ input[type="checkbox"]:checked + .ui-switch .ui-switch-thumb {
 
 .mockToggle {
     display: inline-block;
-    padding: 8px 8px;
+    padding: 7px 7px;
     background: var(--color-surface);
-    color: var(--color-accent);
+    color: var(--color-accent2);
     border-radius: 8px;
     font-size: 10px;
     font-family:monospace;

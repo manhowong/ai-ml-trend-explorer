@@ -19,8 +19,8 @@
   --color-bg-alt: #eff1f5;
   --color-note: #6b7280;
 
-  --color-accent-banner: #0f172a; /* Accent color in banner: e.g. website caption */
-  --color-accent: #b48e35;       /* Accent color 2: e.g. text in links, buttons, etc. */
+  --color-accent: #b48e35;  /* Accent color: links, buttons, etc. */
+  --color-accent2: #000000; /* Accent color 2: e.g. website caption */
   --color-white: #ffffff;
   --color-black: #000000;
 
@@ -29,9 +29,9 @@
   --kbd-shade-1: #9dabbd;
   --kbd-shade-2: #cbcfd9;
 
-  --trend-up: #d14343;
-  --trend-down: #3b2bd9;
-  --trend-flat: #6b7280;
+  --trend-up: #e84b4b;
+  --trend-down: #1f53fd;
+  --trend-flat: #94a3b8;
 
   --chart-label: #1f2937;
   --chart-label-dim: #9ca3af;
@@ -70,8 +70,8 @@
   --color-bg-alt: #141a26;
   --color-note: #666;
 
-  --color-accent-banner: #b3a369; /* Accent color in banner: e.g. website caption */
-  --color-accent: #b3a369;       /* Accent color: e.g. website caption, text in links, buttons, etc. */
+  --color-accent: #b3a369;  /* Accent color: links, buttons, etc. */
+  --color-accent2: #b3a369; /* Accent color 2: e.g. website caption */
   --color-white: #fff;
   --color-black: #000;
 
@@ -81,7 +81,7 @@
   --kbd-shade-2: #64748b;
 
   --trend-up: #e84b4b;
-  --trend-down: #541ffd;
+  --trend-down: #1f53fd;
   --trend-flat: #94a3b8;
 
   --chart-label: #ccc;

@@ -11,7 +11,7 @@
 #site-banner h1 {
     font-size: 55px;
     /* font-weight: 300; */
-    color: var(--color-accent-banner);
+    color: var(--color-accent2);
     text-decoration: none;
     font-family: "Book Antiqua", Georgia, "Times New Roman", Times, serif;
 }

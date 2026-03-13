@@ -19,7 +19,7 @@
     width: 100%;
     padding: 3px 0;
     background: var(--color-surface);
-    color: var(--color-accent);
+    color: var(--color-accent2);
     border: none;
     border-radius: 8px 8px 0 0;
     font-size: 12px;
@@ -102,10 +102,12 @@
 /* Form buttons */
 
 #fitBtn {
+    font-weight: 600;
     margin: 0px 14px;
 }
 
 #reloadBtn {
+    font-weight: 600;
     margin: 8px 14px;
 }
 
@@ -128,6 +130,7 @@
 }
 
 .date-range-select {
+    font-weight: 600;
     width: calc(100% - 28px);
 }
 
@@ -224,6 +227,7 @@ label:has(#toggleIntraEdges:disabled) {
 /* Search Button (in sidebar) ============================================== */
 
 #searchBtn {
+    font-weight: 600;
     margin: 8px 14px;
 }
 

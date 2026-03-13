@@ -41,7 +41,7 @@
     width: 100%;
     padding: 10px 0;
     background: var(--color-surface);
-    color: var(--color-accent);
+    color: var(--color-accent2);
     border: none;
     border-radius: 8 8 0 0;
     font-size: 12px;
@@ -180,6 +180,7 @@
 .sort-select {
     padding: 2px 6px;
     font-size: 12px;
+    font-weight: 600;
     background: var(--color-surface);
     color: var(--color-accent);
     border: 1px solid var(--color-surface-2);
@@ -227,11 +228,11 @@
     color: var(--color-accent);
     text-decoration: none;
     transition: color 0.15s;
+    font-weight: 500;
 }
 
 #panel-footer a:hover {
     text-decoration: underline;
-    color: var(--color-muted);
 }
 
 

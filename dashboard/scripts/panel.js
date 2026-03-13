@@ -107,11 +107,17 @@ export function renderOverviewPanel() {
       <span>
           You can also go to a node in <b>this panel</b> or by <b>search</b>: <br /> 
           Press <span class="mockKbd">Ctrl</span> + <span class="mockKbd">K</span> or 
-          "Go to Topics" in <span class="mockToggle">☰ GRAPH CONTROL</span>
+          "Go to Topics" in
+          <span class="mockToggle">
+            <span class="hamburger-icon">GRAPH CONTROL</span>
+          </span>
       </span>
 
       <span>
-        To see <b>trends</b>, set a range ≥ 2 months in <span class="mockToggle">☰ GRAPH CONTROL</span>
+        To see <b>trends</b>, set a range ≥ 2 months in 
+        <span class="mockToggle">
+          <span class="hamburger-icon">GRAPH CONTROL</span>
+        </span>
       </span>
     </div>`;
 
