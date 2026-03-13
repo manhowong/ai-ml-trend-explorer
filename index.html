@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,14 +14,17 @@
 
         <div id="site-banner">
 
-            <h1> AI/ML Trend<br />Explorer </h1>
+            <h1>AI <span id="slash-mark"></span> ML 
+                Trend<br />
+                Explorer 
+            </h1>
 
             <div id="site-info">
                 <div id="dateText"></div>
-                arXiv Article Statistics (Preliminary)
+                arXiv article statistics (preliminary)
             </div>
 
-            <div>
+            <div id="menu">
 
                 <div id="report-link">
                     <a href="https://github.com/manhowong/ai-trends/issues/new" target="_blank">
@@ -32,9 +35,9 @@
                 <span> | </span>
 
                 <button id="themeToggle" type="button" aria-pressed="true" title="Toggle light/dark theme">
-                    <span class="toggle-label">Theme</span>
-                    <span class="toggle-track" aria-hidden="true">
-                        <span class="toggle-thumb"></span>
+                    <span class="toggle-label">Dark</span>
+                    <span class="ui-switch" aria-hidden="true">
+                        <span class="ui-switch-thumb"></span>
                     </span>
                 </button>
 
@@ -52,24 +55,26 @@
                 <div id="dateRangeControl">
                     <div class="date-range-header">Date Range</div>
                     <div class="date-range-row">
-                        <select id="startMonthSelect" class="date-range-select"></select>
+                        <select id="startMonthSelect" class="date-range-select form-select"></select>
                         <span class="date-range-sep">to</span>
-                        <select id="endMonthSelect" class="date-range-select"></select>
+                        <select id="endMonthSelect" class="date-range-select form-select"></select>
                     </div>
                 </div>
 
-                <button id="searchBtn">⌕ Go to Topics...</button>
+                <button id="searchBtn" class="form-btn">
+                    <span class="icon search-icon">Go to Topics...</span>
+                </button>
 
                 <div id="edgeToggleControl">
                     <label class="edge-toggle-row">
                         <span>Cross-Category Links</span>
                         <input type="checkbox" id="toggleCrossEdges" checked>
-                        <span class="switch"></span>
+                        <span class="ui-switch"><span class="ui-switch-thumb"></span></span>
                     </label>
                     <label class="edge-toggle-row">
                         <span>Within-Category Links</span>
                         <input type="checkbox" id="toggleIntraEdges" checked>
-                        <span class="switch"></span>
+                        <span class="ui-switch"><span class="ui-switch-thumb"></span></span>
                     </label>
                 </div>
 
@@ -78,15 +83,21 @@
                         <span class="font-size-label">Font Size</span>
                         <div class="font-size-right">
                             <span id="fontSizeVal">10px</span>
-                            <span id="fontSizeReset" title="Reset to default">↺</span>
+                            <span id="fontSizeReset" title="Reset to default">
+                                <span class="icon anticlock-nospace-icon"></span>
+                            </span>
                         </div>
                     </div>
                     <input type="range" id="fontSlider" min="6" max="20" value="10">
                 </div>
 
-                <button id="fitBtn">⊡ Fit Screen</button>
+                <button id="fitBtn" class="form-btn">
+                    <span class="icon screen-icon">Fit Screen</span>
+                </button>
                 
-                <a href=""><button id="resetBtn">↺ Reset</button></a>
+                <button id="reloadBtn" class="form-btn" onclick="window.location.reload();">
+                    <span class="icon anticlock-icon">Reload</span>
+                </button>
                 
                 <div id="legend">
                     <div class="legend-item">
@@ -133,7 +144,7 @@
 
                 <div id="panel-footer">
                     <span class="info-box-title">Created by:</span>
-                    <a href="https://www.linkedin.com/in/mh-wong" target="_blank">Man Ho Wong</a> |
+                    <a href="https://github.com/manhowong/" target="_blank">Man Ho Wong</a> |
                     <a href="https://github.com/manhowong/ai-trends" target="_blank">data + code</a> |
                     <a href="https://github.com/manhowong/ai-trends/blob/main/LICENSE"
                         target="_blank">license</a>
@@ -162,3 +173,6 @@
 </body>
 
 </html>
+
+
+

@@ -3,57 +3,6 @@
    ============================================================ */
 
 :root {
-  color-scheme: dark;
-
-  --color-bg: #0f1117;
-  --color-text: #475569;            /* e.g. default text color */
-  --color-text-strong: #e2e8f0;  /* Primary info: e.g. Current date range, node labels in panel */
-  --color-muted: #94a3b8;        /* Secondary info: e.g. Headers, general text, rank bar, report link  */
-  --color-muted-2: #64748b;      /* Nonessential elements A: e.g. rank bar values */
-  --color-muted-3: #475569;      /* Nonessential elements B: e.g. rank number, placeholders */
-
-  --color-panel-bg: #000;
-  --color-panel-border: #222;
-  --color-surface: #1e293b;
-  --color-surface-2: #334155;
-  --color-bg-alt: #141a26;
-  --color-note: #666;
-
-  --color-accent-banner: #b3a369; /* Accent color in banner: e.g. website caption */
-  --color-accent: #b3a369;       /* Accent color: e.g. website caption, text in links, buttons, etc. */
-  --color-white: #fff;
-  --color-black: #000;
-
-  --trend-up: #e84b4b;
-  --trend-down: #541ffd;
-  --trend-flat: #94a3b8;
-
-  --chart-label: #ccc;
-  --chart-label-dim: #444;
-  --chart-count: #fff;
-  --chart-count-dim: #555;
-  --chart-badge-dim-text: #777;
-  --chart-badge-dim-bg: #2a2a2a;
-
-  --link-cross: rgba(255,255,255,0.10);
-  --link-intra: rgba(255,255,255,0.12);
-  --link-cross-dim: rgba(255,255,255,0.04);
-  --link-hover-active: rgba(255,255,255,0.25);
-  --link-hover-dim: rgba(255,255,255,0.02);
-  --node-dim-fill: #333;
-  --node-dim-border: #444;
-  --node-hover-border: #fff;
-  --node-hover-shadow: #aaa;
-  --ext-node-fill: #333;
-  --ext-node-border: #444;
-
-  --kbd-text: #141a26;
-  --kbd-surface: #94a3b8;
-  --kbd-shade-1: #64748b;
-  --kbd-shade-2: #334155;
-}
-
-[data-theme="light"] {
   color-scheme: light;
 
   --color-bg: #ffffff;
@@ -65,7 +14,7 @@
 
   --color-panel-bg: #eff1f5;
   --color-panel-border: #cfd1d3;
-  --color-surface: #e5e7eb;
+  --color-surface: #e2e4e9;
   --color-surface-2: #d1d5db;
   --color-bg-alt: #eff1f5;
   --color-note: #6b7280;
@@ -74,6 +23,11 @@
   --color-accent: #b48e35;       /* Accent color 2: e.g. text in links, buttons, etc. */
   --color-white: #ffffff;
   --color-black: #000000;
+
+  --kbd-text: #0f172a;
+  --kbd-surface: #e0e3e8;
+  --kbd-shade-1: #9dabbd;
+  --kbd-shade-2: #cbcfd9;
 
   --trend-up: #d14343;
   --trend-down: #3b2bd9;
@@ -97,9 +51,56 @@
   --node-hover-shadow: #64748b;
   --ext-node-fill: #9ca3af;
   --ext-node-border: #6b7280;
-
-  --kbd-text: #0f172a;
-  --kbd-surface: #e5e7eb;
-  --kbd-shade-1: #cbd5e1;
-  --kbd-shade-2: #94a3b8;
 }
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #0f1117;
+  --color-text: #475569;            /* e.g. default text color */
+  --color-text-strong: #e2e8f0;  /* Primary info: e.g. Current date range, node labels in panel */
+  --color-muted: #94a3b8;        /* Secondary info: e.g. Headers, general text, rank bar, report link  */
+  --color-muted-2: #64748b;      /* Nonessential elements A: e.g. rank bar values */
+  --color-muted-3: #475569;      /* Nonessential elements B: e.g. rank number, placeholders */
+
+  --color-panel-bg: #000;
+  --color-panel-border: #222;
+  --color-surface: #1e293b;
+  --color-surface-2: #334155;
+  --color-bg-alt: #141a26;
+  --color-note: #666;
+
+  --color-accent-banner: #b3a369; /* Accent color in banner: e.g. website caption */
+  --color-accent: #b3a369;       /* Accent color: e.g. website caption, text in links, buttons, etc. */
+  --color-white: #fff;
+  --color-black: #000;
+
+  --kbd-text: #141a26;
+  --kbd-surface: #8998ae;
+  --kbd-shade-1: #546782;
+  --kbd-shade-2: #64748b;
+
+  --trend-up: #e84b4b;
+  --trend-down: #541ffd;
+  --trend-flat: #94a3b8;
+
+  --chart-label: #ccc;
+  --chart-label-dim: #444;
+  --chart-count: #fff;
+  --chart-count-dim: #555;
+  --chart-badge-dim-text: #777;
+  --chart-badge-dim-bg: #2a2a2a;
+
+  --link-cross: rgba(255,255,255,0.10);
+  --link-intra: rgba(255,255,255,0.12);
+  --link-cross-dim: rgba(255,255,255,0.04);
+  --link-hover-active: rgba(255,255,255,0.25);
+  --link-hover-dim: rgba(255,255,255,0.02);
+  --node-dim-fill: #333;
+  --node-dim-border: #444;
+  --node-hover-border: #fff;
+  --node-hover-shadow: #aaa;
+  --ext-node-fill: #333;
+  --ext-node-border: #444;
+}
+

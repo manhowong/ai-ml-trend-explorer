@@ -56,7 +56,7 @@
     }
 
     #sidebarToggle::after {
-        content: "▲ HIDE";
+        content: "\23F6\2003 HIDE";
     }
 
     #right-panel {

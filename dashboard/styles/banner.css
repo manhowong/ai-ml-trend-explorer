@@ -16,6 +16,14 @@
     font-family: "Book Antiqua", Georgia, "Times New Roman", Times, serif;
 }
 
+#slash-mark::after {
+    content: "/";
+    font-size: larger;
+    font-weight: bold;
+    color: var(--color-accent); 
+    line-height: 0px;  /* Set to 0 so it's size does not affect line spacing */
+}
+
 #site-info {
     color: var(--color-muted);
     padding-top: 10px;
@@ -72,32 +80,4 @@
 
 #themeToggle .toggle-label {
     line-height: 1;
-}
-
-#themeToggle .toggle-track {
-    position: relative;
-    width: 30px;
-    height: 16px;
-    background: var(--color-surface-2);
-    border-radius: 999px;
-    transition: background 0.15s;
-}
-
-#themeToggle .toggle-thumb {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 12px;
-    height: 12px;
-    background: var(--color-white);
-    border-radius: 999px;
-    transition: transform 0.15s;
-}
-
-#themeToggle[aria-pressed="true"] .toggle-track {
-    background: var(--color-accent);
-}
-
-#themeToggle[aria-pressed="true"] .toggle-thumb {
-    transform: translateX(14px);
 }

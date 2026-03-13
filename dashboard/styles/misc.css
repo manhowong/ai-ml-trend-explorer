@@ -1,5 +1,7 @@
 ﻿/* Misc ===================================================================== */
 
+/* Text blocks */
+
 .instructions {
     display: flex;
     flex-direction: column;
@@ -15,6 +17,37 @@
     color: var(--color-muted-3);
     font-style: italic;
     padding: 4px 0;
+}
+
+/* Icons */
+
+/* Base settings applied to specific icons */
+.icon::before {
+  display: inline-block;
+  font-family: "Arial Unicode MS", "Segoe UI Symbol", sans-serif;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.screen-icon::before {
+  content: "\25A3"; /* ▣ + space */
+}
+
+.search-icon::before {
+  content: "\2315"; /* ⌕ + space */
+}
+
+.anticlock-icon::before {
+  content: "\21BA"; /* ↺ + space */
+}
+
+.anticlock-nospace-icon::before {
+  content: "\21BA"; /* ↺ without padding */
+  padding-right: 0px;
+}
+
+.menu-icon::before {
+  content: "\2630"; /* ☰ + space */
 }
 
 .github-icon {
@@ -34,6 +67,84 @@
 .github-icon:hover {
   background-color: var(--color-accent);
 }
+
+/* Form buttons */
+
+.form-btn {
+    width: calc(100% - 28px);
+    padding: 4px 10px;
+    text-align: center;
+    background: var(--color-surface);
+    color: var(--color-accent);
+    border: 1px solid var(--color-surface-2);
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.form-btn:hover {
+    background: var(--color-surface-2);
+}
+
+/* Dropdown list */
+
+.form-select {
+    padding: 2px 6px;
+    font-size: 12px;
+    font-family: monospace;
+    background: var(--color-surface);
+    color: var(--color-accent);
+    border: 1px solid var(--color-surface-2);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: var(--color-muted-2);
+}
+
+/* Switch */
+
+.ui-switch {
+    position: relative;
+    width: 28px;
+    height: 15px;
+    background: var(--color-surface-2);
+    border-radius: 999px;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.ui-switch-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 11px;
+    height: 11px;
+    background: var(--color-white);
+    border-radius: 50%;
+    transition: transform 0.2s, background 0.2s;
+}
+
+input[type="checkbox"]:checked + .ui-switch {
+    background: var(--color-accent);
+}
+
+input[type="checkbox"]:checked + .ui-switch .ui-switch-thumb {
+    transform: translateX(13px);
+}
+
+#themeToggle[aria-pressed="true"] .ui-switch {
+    background: var(--color-accent);
+}
+
+#themeToggle[aria-pressed="true"] .ui-switch .ui-switch-thumb {
+    transform: translateX(13px);
+}
+
+/* Text styles */
 
 .mockBtn {
     display: inline-block;
@@ -66,9 +177,9 @@
     font-weight: bold;
     background: var(--kbd-surface);
     color: var(--kbd-text);
-    border: 1px solid var(--kbd-shade-1);
-    box-shadow: 1px 3px 2px var(--kbd-shade-1), 0 2px 0 1px var(--kbd-shade-2);
-    border-radius: 3px;
+    /* border: 1px solid var(--kbd-shade-1); */
+    box-shadow: 0px 2px 2px var(--kbd-shade-1), 0 2px 0 2px var(--kbd-shade-2);
+    border-radius: 2px;
     font-size: 11px;
 }
 
