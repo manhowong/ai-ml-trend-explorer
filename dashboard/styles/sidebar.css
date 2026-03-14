@@ -142,14 +142,13 @@
 /* Font size */
 
 #fontSizeControl {
-    padding: 4px 14px;
+    padding: 8px 14px;
 }
 
 .font-size-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4px;
 }
 
 .font-size-label {
@@ -187,6 +186,44 @@
     cursor: pointer;
 }
 
+/* Paper threshold */
+
+#paperThresholdControl {
+    padding: 0px 14px;
+}
+
+.paper-threshold-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.paper-threshold-label {
+    color: var(--color-muted);
+    font-size: 13px;
+}
+
+.paper-threshold-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#paperThresholdVal {
+    color: var(--color-muted);
+    font-size: 13px;
+}
+
+#paperThresholdVal::before {
+    content: "\2265";
+}
+
+#paperThresholdSlider {
+    width: 100%;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+}
+
 /* Edge toggle */
 
 #edgeToggleControl {
@@ -200,7 +237,7 @@
     font-size: 13px;
     color: var(--color-muted);
     cursor: pointer;
-    margin: 5px 0;
+    margin: 0px 0;
 }
 
 .edge-toggle-row input[type="checkbox"] {

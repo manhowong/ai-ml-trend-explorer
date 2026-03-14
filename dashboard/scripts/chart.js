@@ -117,11 +117,11 @@ function setLabelPostions(nodes, distance) {
     // Option 2: Labels inside the ring of nodes
     // const align = Math.abs(sin) < 0.01 ? 'left' : (sin >= 0 ? 'right' : 'left');
 
-    // Rotate labels radially (clockwise) if there are more than 12 nodes
-    let deg = 0;
+    let deg = 0; // Degrees to rotate
     let placement = 'inside'; // label placed inside the node
-
-    if (nodes.length > 24) {
+    
+    // Rotate labels radially (clockwise) if there are more than 12 nodes
+    if (nodes.length > 12) {
       deg = rad * 180 / Math.PI  // convert radian to degree
       // Shift the rotation (so labels of nodes at 90 deg remain horizontal)
       deg = deg + 90;
@@ -145,7 +145,7 @@ function setLabelPostions(nodes, distance) {
 }
 
 function labelDistance() {
-  return state.currentView === 'overview' ? 8 : 15;
+  return state.currentView === 'overview' ? 8 : 12;
 }
 
 // Rich-label helpers ----------------------------------------------------------
@@ -226,11 +226,27 @@ export function renderChart(nodes, links) {
   const centerPct = isSingle ? [ `${cx}%`, '50%' ] : getChartCenter();
 
   const labeledNodes = setLabelPostions(nodes, labelDistance());
+  const emptyMessage = 'Lower the threshold to\nsee more nodes.';
 
   echart.setOption({
     backgroundColor:   'transparent',
     animation:          true,
     animationDuration:  1000,
+    graphic: nodes.length
+      ? []
+      : [{
+          type: 'text',
+          left: `${cx}%`,
+          top: 'center',
+          silent: true,
+          style: {
+            text: emptyMessage,
+            fontSize: 17,
+            fill: themeVar('chartLabelDim'),
+            textAlign: 'left',
+            textVerticalAlign: 'middle'
+          },
+        }],
     series: [{
       type:      'graph',
       layout:    'circular',

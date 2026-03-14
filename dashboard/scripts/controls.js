@@ -6,9 +6,12 @@ import { state } from './state.js';
 import { applyNormalizedData, initializeDerivedData } from './data.js';
 import { initializeRichStyles } from './chart.js';
 import { goOverview, focusCategory, focusChildNode } from './views.js';
+import { renderChart, buildAdjMap } from './chart.js';
+
+const PAPER_THRESHOLD_STEPS = [1, 10, 50, 100, 500, 1000];
 
 
-// ── Date-range selects ───────────────────────────────────────
+// Date-range selects ----------------------------------------------------------
 
 /** Populate the start/end month <select> elements and attach handlers. */
 export function buildDateRangeControls() {
@@ -58,7 +61,7 @@ export function onDateRangeChange() {
 }
 
 
-// ── Date Text ────────────────────────────────────────────────
+// Date Text -------------------------------------------------------------------
 
 export function updateDateText() {
   const el = document.getElementById('dateText');
@@ -69,7 +72,7 @@ export function updateDateText() {
 }
 
 
-// ── Sidebar toggles ──────────────────────────────────────────
+// Sidebar toggles -------------------------------------------------------------
 
 export function toggleSidebar() {
   const sidebar = document.getElementById('sidebar');
@@ -96,9 +99,53 @@ export function initEdgeToggles() {
     });
 }
 
+export function initPaperThresholdControl() {
+  const slider = document.getElementById('paperThresholdSlider');
+  const value  = document.getElementById('paperThresholdVal');
+  if (!slider || !value) return;
+
+  slider.min = 0;
+  slider.max = PAPER_THRESHOLD_STEPS.length - 1;
+  slider.step = 1;
+
+  const initialIndex = Math.max(0, PAPER_THRESHOLD_STEPS.indexOf(state.paperThreshold));
+  slider.value = String(initialIndex);
+  value.textContent = `${PAPER_THRESHOLD_STEPS[initialIndex]}`;
+
+  slider.addEventListener('input', e => {
+    const idx = parseInt(e.target.value, 10);
+    const next = PAPER_THRESHOLD_STEPS[idx] || PAPER_THRESHOLD_STEPS[0];
+    if (next === state.paperThreshold) return;
+    state.paperThreshold = next;
+    value.textContent = `${next}`;
+    applyNormalizedData();
+    initializeDerivedData();
+    initializeRichStyles();
+    refreshCurrentView();
+  });
+}
+
 
 function refreshCurrentView() {
-  if      (state.currentView === 'overview') goOverview();
-  else if (state.currentView === 'category') focusCategory(state.currentCat);
-  else if (state.currentView === 'child')    focusChildNode(state.currentChild);
+  if (state.currentView === 'overview') return goOverview();
+
+  if (state.currentView === 'category') {
+    if (!state.catMap[state.currentCat]) {
+      state.curNodes = [];
+      state.curLinks = [];
+      state.curAdjMap = buildAdjMap([]);
+      return renderChart([], []);
+    }
+    return focusCategory(state.currentCat);
+  }
+  
+  if (state.currentView === 'child') {
+    if (!state.childMap[state.currentChild]) {
+      state.curNodes = [];
+      state.curLinks = [];
+      state.curAdjMap = buildAdjMap([]);
+      return renderChart([], []);
+    }
+    return focusChildNode(state.currentChild);
+  }
 }

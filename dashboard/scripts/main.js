@@ -12,7 +12,7 @@ import { echart, initializeRichStyles,
 import { goOverview, focusCategory, focusChildNode }   from './views.js';
 import { setSortMode }                                 from './panel.js';
 import { buildDateRangeControls, updateDateText,
-         toggleSidebar, initEdgeToggles } from './controls.js';
+         toggleSidebar, initEdgeToggles, initPaperThresholdControl } from './controls.js';
 import { initSearch } from './search.js';
 
 
@@ -254,6 +254,7 @@ async function initializeApp() {
   initializeRichStyles();
   goOverview();
   initEdgeToggles();
+  initPaperThresholdControl();
   initSearch();
 }
 

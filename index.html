@@ -73,6 +73,16 @@
                     <span class="icon search-icon">Go to Topics...</span>
                 </button>
 
+                <div id="paperThresholdControl">
+                    <div class="paper-threshold-header">
+                        <span class="paper-threshold-label">Articles per Topic (low-level)</span>
+                        <div class="paper-threshold-right">
+                            <span id="paperThresholdVal">1</span>
+                        </div>
+                    </div>
+                    <input type="range" id="paperThresholdSlider" min="0" max="4" step="1" value="0">
+                </div>
+
                 <div id="edgeToggleControl">
                     <label class="edge-toggle-row">
                         <span>Cross-Category Links</span>
@@ -189,6 +199,3 @@
 </body>
 
 </html>
-
-
-

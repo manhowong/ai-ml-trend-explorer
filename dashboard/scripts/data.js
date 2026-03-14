@@ -102,6 +102,7 @@ export function toHotness(startValue, endValue) {
 export function applyNormalizedData() {
   const nodes      = (state.rawMetadata || {}).nodes || {};
   const timeseries = state.rawTimeseries || {};
+  const threshold  = Math.max(1, parseInt(state.paperThreshold, 10) || 1);
 
   const startIdx = state.dataMonths.indexOf(state.selectedStartMonth);
   const endIdx   = state.dataMonths.indexOf(state.selectedEndMonth);
@@ -143,10 +144,10 @@ export function applyNormalizedData() {
       isUnassigned: papers <= 0,
     };
 
-    if (!childrenByCategoryAll[topic.parentId]) childrenByCategoryAll[topic.parentId] = [];
-    childrenByCategoryAll[topic.parentId].push(child);
+    if (papers >= threshold) {
+      if (!childrenByCategoryAll[topic.parentId]) childrenByCategoryAll[topic.parentId] = [];
+      childrenByCategoryAll[topic.parentId].push(child);
 
-    if (papers > 0) {
       if (!childrenByCategory[topic.parentId]) childrenByCategory[topic.parentId] = [];
       childrenByCategory[topic.parentId].push(child);
     }

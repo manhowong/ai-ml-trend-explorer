@@ -49,6 +49,9 @@ export const state = {
   // Font
   currentFontSize: 10,
 
+  // Paper count threshold
+  paperThreshold: 1,
+
   // Edge
   showIntraEdges: true,   // within-category links
   showCrossEdges: true,   // cross-category links
