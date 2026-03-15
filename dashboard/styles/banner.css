@@ -29,13 +29,17 @@
 
 #banner-menu {
     margin-top: 10px;
-    line-height: 1em; /* Ensure buttons of different heights are aligned */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 2; /* Ensure buttons of different heights are aligned */
 }
 
 /* Report button */
 
 #report-btn {
     display: inline-flex;
+    align-items: center;
     font-size: var(--font-x-sm);
     font-weight: bold;
     font-family: monospace;
@@ -85,6 +89,7 @@
     font-size: var(--font-norm);
     color: var(--color-muted);
     padding-top: 10px;
+    line-height: 1.5;
 }
 
 #dateText {
