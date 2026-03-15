@@ -87,7 +87,7 @@ export function nodeSize(papers, level) {
 }
 
 export function circleAngles(n) {
-  return Array.from({ length: n }, (_, i) => (2 * Math.PI * i / n) - Math.PI / 2);
+  return Array.from({ length: n }, (_, i) => (2 * Math.PI / n * i) - Math.PI / 2);
 }
 
 export function buildAdjMap(links) {

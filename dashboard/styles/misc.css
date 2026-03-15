@@ -26,6 +26,8 @@
   display: inline-block;
   font-weight: bold;
   padding-right: 6px;
+  font-size: 16px;
+  line-height: 0px; /* Prevent adding height to line if font size is big */
 }
 
 .screen-icon::before {
@@ -34,6 +36,7 @@
 
 .search-icon::before {
   content: "\2315"; /* ⌕ */
+  font-size: 20px;
 }
 
 .anticlock-icon::before {

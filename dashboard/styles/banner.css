@@ -47,14 +47,14 @@
     font-size: 12px;
     font-weight: bold;
     font-family: monospace;
-    color: var(--color-muted);
+    color: var(--color-accent);
     text-transform: uppercase;
     text-decoration: none;
     pointer-events: auto; /* Ensure it's clickable even when placed inside anti-click element*/
 }
 
 #report-link a:hover {
-    color: var(--color-accent);
+    color: var(--color-muted);
 }
 
 #themeToggle {
@@ -74,11 +74,6 @@
     gap: 8px;
 }
 
-#themeToggle:hover {
-    color: var(--color-accent);
-    text-decoration: none;
-}
-
 #themeToggle .toggle-label {
     line-height: 1;
 }
@@ -88,5 +83,5 @@
 }
 
 #themeToggle[aria-pressed="true"] .ui-switch .ui-switch-thumb {
-    transform: translateX(13px);
+    transform: translateX(16px);
 }

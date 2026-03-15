@@ -8,6 +8,7 @@
     position: relative;
     width: 100%;
     height: 100%;
+    touch-action: pan-y;  /* vertical panning only, no pinching; affects page only, not chart */
 }
 
 #chart {
